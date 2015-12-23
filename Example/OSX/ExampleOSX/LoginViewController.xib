@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="LoginViewController" customModule="i3Bar" customModuleProvider="target">
+            <connections>
+                <outlet property="passwordField" destination="Lsq-hg-pzX" id="AW7-Gj-v8U"/>
+                <outlet property="usernameField" destination="ygZ-Vt-Nwg" id="75E-6y-YVP"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="221" height="123"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ygZ-Vt-Nwg">
+                    <rect key="frame" x="20" y="81" width="181" height="22"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Username" drawsBackground="YES" id="X75-Lb-PQJ">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hae-BJ-e2S">
+                    <rect key="frame" x="20" y="49" width="181" height="22"/>
+                    <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="SX3-T2-WT7">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <allowedInputSourceLocales>
+                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                        </allowedInputSourceLocales>
+                    </secureTextFieldCell>
+                </secureTextField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eUC-H8-TE6">
+                    <rect key="frame" x="133" y="13" width="74" height="32"/>
+                    <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ejR-z7-23L">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="login:" target="-2" id="B1p-Dk-MsP"/>
+                    </connections>
+                </button>
+                <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lsq-hg-pzX">
+                    <rect key="frame" x="20" y="49" width="181" height="22"/>
+                    <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="XhS-Xk-rRw">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <allowedInputSourceLocales>
+                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                        </allowedInputSourceLocales>
+                    </secureTextFieldCell>
+                </secureTextField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hae-BJ-e2S" secondAttribute="trailing" constant="20" id="2CG-Jt-paO"/>
+                <constraint firstAttribute="trailing" secondItem="eUC-H8-TE6" secondAttribute="trailing" constant="20" id="2YV-CD-hge"/>
+                <constraint firstItem="ygZ-Vt-Nwg" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="7pO-yo-lva"/>
+                <constraint firstItem="hae-BJ-e2S" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="Dyp-67-FMw"/>
+                <constraint firstAttribute="trailing" secondItem="ygZ-Vt-Nwg" secondAttribute="trailing" constant="20" id="SBS-La-7fY"/>
+                <constraint firstItem="hae-BJ-e2S" firstAttribute="top" secondItem="ygZ-Vt-Nwg" secondAttribute="bottom" constant="10" id="dCF-mf-pu9"/>
+                <constraint firstItem="eUC-H8-TE6" firstAttribute="top" secondItem="hae-BJ-e2S" secondAttribute="bottom" constant="8" id="fij-dR-m3R"/>
+                <constraint firstItem="ygZ-Vt-Nwg" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="nxH-Ab-CKa"/>
+                <constraint firstItem="hae-BJ-e2S" firstAttribute="top" secondItem="ygZ-Vt-Nwg" secondAttribute="bottom" constant="10" id="vo8-bF-jOa"/>
+            </constraints>
+            <point key="canvasLocation" x="175.5" y="277.5"/>
+        </customView>
+    </objects>
+</document>

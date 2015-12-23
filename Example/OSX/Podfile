@@ -1,0 +1,11 @@
+platform :osx, '10.10'
+use_frameworks!
+
+target 'ExampleOSX' do
+pod 'Alamofire', '~> 3.0'
+    pod 'Decodable', '~> 0.3.3'
+end
+
+target 'ExampleOSXTests' do
+
+end

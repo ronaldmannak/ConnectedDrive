@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-               BuildableName = "ConnectedDrive OSX.framework"
-               BlueprintName = "ConnectedDrive OSX"
+               BlueprintIdentifier = "521F60DA1C2B350900E39C3A"
+               BuildableName = "ConnectedDrive tvOS.framework"
+               BlueprintName = "ConnectedDrive tvOS"
                ReferencedContainer = "container:ConnectedDrive.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "521F60A91C2B34B500E39C3A"
-               BuildableName = "ConnectedDrive OSX Tests.xctest"
-               BlueprintName = "ConnectedDrive OSX Tests"
+               BlueprintIdentifier = "521F60E31C2B350900E39C3A"
+               BuildableName = "ConnectedDrive tvOSTests.xctest"
+               BlueprintName = "ConnectedDrive tvOSTests"
                ReferencedContainer = "container:ConnectedDrive.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-            BuildableName = "ConnectedDrive OSX.framework"
-            BlueprintName = "ConnectedDrive OSX"
+            BlueprintIdentifier = "521F60DA1C2B350900E39C3A"
+            BuildableName = "ConnectedDrive tvOS.framework"
+            BlueprintName = "ConnectedDrive tvOS"
             ReferencedContainer = "container:ConnectedDrive.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-            BuildableName = "ConnectedDrive OSX.framework"
-            BlueprintName = "ConnectedDrive OSX"
+            BlueprintIdentifier = "521F60DA1C2B350900E39C3A"
+            BuildableName = "ConnectedDrive tvOS.framework"
+            BlueprintName = "ConnectedDrive tvOS"
             ReferencedContainer = "container:ConnectedDrive.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-            BuildableName = "ConnectedDrive OSX.framework"
-            BlueprintName = "ConnectedDrive OSX"
+            BlueprintIdentifier = "521F60DA1C2B350900E39C3A"
+            BuildableName = "ConnectedDrive tvOS.framework"
+            BlueprintName = "ConnectedDrive tvOS"
             ReferencedContainer = "container:ConnectedDrive.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

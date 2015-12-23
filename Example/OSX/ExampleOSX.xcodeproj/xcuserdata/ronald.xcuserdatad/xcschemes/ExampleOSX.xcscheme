@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-               BuildableName = "ConnectedDrive OSX.framework"
-               BlueprintName = "ConnectedDrive OSX"
-               ReferencedContainer = "container:ConnectedDrive.xcodeproj">
+               BlueprintIdentifier = "521F60FA1C2B355700E39C3A"
+               BuildableName = "ExampleOSX.app"
+               BlueprintName = "ExampleOSX"
+               ReferencedContainer = "container:ExampleOSX.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,20 +32,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "521F60A91C2B34B500E39C3A"
-               BuildableName = "ConnectedDrive OSX Tests.xctest"
-               BlueprintName = "ConnectedDrive OSX Tests"
-               ReferencedContainer = "container:ConnectedDrive.xcodeproj">
+               BlueprintIdentifier = "521F61091C2B355700E39C3A"
+               BuildableName = "ExampleOSXTests.xctest"
+               BlueprintName = "ExampleOSXTests"
+               ReferencedContainer = "container:ExampleOSX.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-            BuildableName = "ConnectedDrive OSX.framework"
-            BlueprintName = "ConnectedDrive OSX"
-            ReferencedContainer = "container:ConnectedDrive.xcodeproj">
+            BlueprintIdentifier = "521F60FA1C2B355700E39C3A"
+            BuildableName = "ExampleOSX.app"
+            BlueprintName = "ExampleOSX"
+            ReferencedContainer = "container:ExampleOSX.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -61,15 +61,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-            BuildableName = "ConnectedDrive OSX.framework"
-            BlueprintName = "ConnectedDrive OSX"
-            ReferencedContainer = "container:ConnectedDrive.xcodeproj">
+            BlueprintIdentifier = "521F60FA1C2B355700E39C3A"
+            BuildableName = "ExampleOSX.app"
+            BlueprintName = "ExampleOSX"
+            ReferencedContainer = "container:ExampleOSX.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -79,15 +80,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-            BuildableName = "ConnectedDrive OSX.framework"
-            BlueprintName = "ConnectedDrive OSX"
-            ReferencedContainer = "container:ConnectedDrive.xcodeproj">
+            BlueprintIdentifier = "521F60FA1C2B355700E39C3A"
+            BuildableName = "ExampleOSX.app"
+            BlueprintName = "ExampleOSX"
+            ReferencedContainer = "container:ExampleOSX.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

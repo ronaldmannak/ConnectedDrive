@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ConnectedDrive iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>ConnectedDrive tvOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>ConnectedDrive.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +28,26 @@
 			<true/>
 		</dict>
 		<key>521F60A91C2B34B500E39C3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>521F60BE1C2B34F800E39C3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>521F60C71C2B34F800E39C3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>521F60DA1C2B350900E39C3A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>521F60E31C2B350900E39C3A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

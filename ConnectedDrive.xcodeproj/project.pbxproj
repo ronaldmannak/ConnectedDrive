@@ -8,8 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		521F60A41C2B34B500E39C3A /* ConnectedDrive.h in Headers */ = {isa = PBXBuildFile; fileRef = 521F60A31C2B34B500E39C3A /* ConnectedDrive.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		521F60AB1C2B34B500E39C3A /* ConnectedDrive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60A01C2B34B500E39C3A /* ConnectedDrive.framework */; };
+		521F60AB1C2B34B500E39C3A /* ConnectedDrive OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60A01C2B34B500E39C3A /* ConnectedDrive OSX.framework */; };
 		521F60B01C2B34B500E39C3A /* ConnectedDriveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F60AF1C2B34B500E39C3A /* ConnectedDriveTests.swift */; };
+		521F60C21C2B34F800E39C3A /* ConnectedDrive iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 521F60C11C2B34F800E39C3A /* ConnectedDrive iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		521F60C91C2B34F800E39C3A /* ConnectedDrive iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60BF1C2B34F800E39C3A /* ConnectedDrive iOS.framework */; };
+		521F60CE1C2B34F800E39C3A /* ConnectedDrive_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F60CD1C2B34F800E39C3A /* ConnectedDrive_iOSTests.swift */; };
+		521F60DE1C2B350900E39C3A /* ConnectedDrive tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 521F60DD1C2B350900E39C3A /* ConnectedDrive tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		521F60E51C2B350900E39C3A /* ConnectedDrive tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60DB1C2B350900E39C3A /* ConnectedDrive tvOS.framework */; };
+		521F60EA1C2B350900E39C3A /* ConnectedDrive_tvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F60E91C2B350900E39C3A /* ConnectedDrive_tvOSTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,15 +26,41 @@
 			remoteGlobalIDString = 521F609F1C2B34B500E39C3A;
 			remoteInfo = ConnectedDrive;
 		};
+		521F60CA1C2B34F800E39C3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 521F60971C2B34B500E39C3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 521F60BE1C2B34F800E39C3A;
+			remoteInfo = "ConnectedDrive iOS";
+		};
+		521F60E61C2B350900E39C3A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 521F60971C2B34B500E39C3A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 521F60DA1C2B350900E39C3A;
+			remoteInfo = "ConnectedDrive tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		521F60A01C2B34B500E39C3A /* ConnectedDrive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConnectedDrive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		521F60A01C2B34B500E39C3A /* ConnectedDrive OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ConnectedDrive OSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		521F60A31C2B34B500E39C3A /* ConnectedDrive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectedDrive.h; sourceTree = "<group>"; };
 		521F60A51C2B34B500E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		521F60AA1C2B34B500E39C3A /* ConnectedDriveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectedDriveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		521F60AA1C2B34B500E39C3A /* ConnectedDrive OSX Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConnectedDrive OSX Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		521F60AF1C2B34B500E39C3A /* ConnectedDriveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDriveTests.swift; sourceTree = "<group>"; };
 		521F60B11C2B34B500E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		521F60BF1C2B34F800E39C3A /* ConnectedDrive iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ConnectedDrive iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		521F60C11C2B34F800E39C3A /* ConnectedDrive iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConnectedDrive iOS.h"; sourceTree = "<group>"; };
+		521F60C31C2B34F800E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		521F60C81C2B34F800E39C3A /* ConnectedDrive iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConnectedDrive iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		521F60CD1C2B34F800E39C3A /* ConnectedDrive_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDrive_iOSTests.swift; sourceTree = "<group>"; };
+		521F60CF1C2B34F800E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		521F60DB1C2B350900E39C3A /* ConnectedDrive tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ConnectedDrive tvOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		521F60DD1C2B350900E39C3A /* ConnectedDrive tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConnectedDrive tvOS.h"; sourceTree = "<group>"; };
+		521F60DF1C2B350900E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		521F60E41C2B350900E39C3A /* ConnectedDrive tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConnectedDrive tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		521F60E91C2B350900E39C3A /* ConnectedDrive_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDrive_tvOSTests.swift; sourceTree = "<group>"; };
+		521F60EB1C2B350900E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +75,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521F60AB1C2B34B500E39C3A /* ConnectedDrive.framework in Frameworks */,
+				521F60AB1C2B34B500E39C3A /* ConnectedDrive OSX.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60BB1C2B34F800E39C3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60C51C2B34F800E39C3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				521F60C91C2B34F800E39C3A /* ConnectedDrive iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60D71C2B350900E39C3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60E11C2B350900E39C3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				521F60E51C2B350900E39C3A /* ConnectedDrive tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +117,10 @@
 			children = (
 				521F60A21C2B34B500E39C3A /* ConnectedDrive */,
 				521F60AE1C2B34B500E39C3A /* ConnectedDriveTests */,
+				521F60C01C2B34F800E39C3A /* ConnectedDrive iOS */,
+				521F60CC1C2B34F800E39C3A /* ConnectedDrive iOSTests */,
+				521F60DC1C2B350900E39C3A /* ConnectedDrive tvOS */,
+				521F60E81C2B350900E39C3A /* ConnectedDrive tvOSTests */,
 				521F60A11C2B34B500E39C3A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,8 +128,12 @@
 		521F60A11C2B34B500E39C3A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				521F60A01C2B34B500E39C3A /* ConnectedDrive.framework */,
-				521F60AA1C2B34B500E39C3A /* ConnectedDriveTests.xctest */,
+				521F60A01C2B34B500E39C3A /* ConnectedDrive OSX.framework */,
+				521F60AA1C2B34B500E39C3A /* ConnectedDrive OSX Tests.xctest */,
+				521F60BF1C2B34F800E39C3A /* ConnectedDrive iOS.framework */,
+				521F60C81C2B34F800E39C3A /* ConnectedDrive iOSTests.xctest */,
+				521F60DB1C2B350900E39C3A /* ConnectedDrive tvOS.framework */,
+				521F60E41C2B350900E39C3A /* ConnectedDrive tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -86,6 +156,42 @@
 			path = ConnectedDriveTests;
 			sourceTree = "<group>";
 		};
+		521F60C01C2B34F800E39C3A /* ConnectedDrive iOS */ = {
+			isa = PBXGroup;
+			children = (
+				521F60C11C2B34F800E39C3A /* ConnectedDrive iOS.h */,
+				521F60C31C2B34F800E39C3A /* Info.plist */,
+			);
+			path = "ConnectedDrive iOS";
+			sourceTree = "<group>";
+		};
+		521F60CC1C2B34F800E39C3A /* ConnectedDrive iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				521F60CD1C2B34F800E39C3A /* ConnectedDrive_iOSTests.swift */,
+				521F60CF1C2B34F800E39C3A /* Info.plist */,
+			);
+			path = "ConnectedDrive iOSTests";
+			sourceTree = "<group>";
+		};
+		521F60DC1C2B350900E39C3A /* ConnectedDrive tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				521F60DD1C2B350900E39C3A /* ConnectedDrive tvOS.h */,
+				521F60DF1C2B350900E39C3A /* Info.plist */,
+			);
+			path = "ConnectedDrive tvOS";
+			sourceTree = "<group>";
+		};
+		521F60E81C2B350900E39C3A /* ConnectedDrive tvOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				521F60E91C2B350900E39C3A /* ConnectedDrive_tvOSTests.swift */,
+				521F60EB1C2B350900E39C3A /* Info.plist */,
+			);
+			path = "ConnectedDrive tvOSTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -97,12 +203,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		521F60BC1C2B34F800E39C3A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				521F60DE1C2B350900E39C3A /* ConnectedDrive tvOS.h in Headers */,
+				521F60C21C2B34F800E39C3A /* ConnectedDrive iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60D81C2B350900E39C3A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		521F609F1C2B34B500E39C3A /* ConnectedDrive */ = {
+		521F609F1C2B34B500E39C3A /* ConnectedDrive OSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 521F60B41C2B34B500E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive" */;
+			buildConfigurationList = 521F60B41C2B34B500E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive OSX" */;
 			buildPhases = (
 				521F609B1C2B34B500E39C3A /* Sources */,
 				521F609C1C2B34B500E39C3A /* Frameworks */,
@@ -113,14 +235,14 @@
 			);
 			dependencies = (
 			);
-			name = ConnectedDrive;
+			name = "ConnectedDrive OSX";
 			productName = ConnectedDrive;
-			productReference = 521F60A01C2B34B500E39C3A /* ConnectedDrive.framework */;
+			productReference = 521F60A01C2B34B500E39C3A /* ConnectedDrive OSX.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		521F60A91C2B34B500E39C3A /* ConnectedDriveTests */ = {
+		521F60A91C2B34B500E39C3A /* ConnectedDrive OSX Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 521F60B71C2B34B500E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDriveTests" */;
+			buildConfigurationList = 521F60B71C2B34B500E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive OSX Tests" */;
 			buildPhases = (
 				521F60A61C2B34B500E39C3A /* Sources */,
 				521F60A71C2B34B500E39C3A /* Frameworks */,
@@ -131,9 +253,81 @@
 			dependencies = (
 				521F60AD1C2B34B500E39C3A /* PBXTargetDependency */,
 			);
-			name = ConnectedDriveTests;
+			name = "ConnectedDrive OSX Tests";
 			productName = ConnectedDriveTests;
-			productReference = 521F60AA1C2B34B500E39C3A /* ConnectedDriveTests.xctest */;
+			productReference = 521F60AA1C2B34B500E39C3A /* ConnectedDrive OSX Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		521F60BE1C2B34F800E39C3A /* ConnectedDrive iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 521F60D01C2B34F800E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive iOS" */;
+			buildPhases = (
+				521F60BA1C2B34F800E39C3A /* Sources */,
+				521F60BB1C2B34F800E39C3A /* Frameworks */,
+				521F60BC1C2B34F800E39C3A /* Headers */,
+				521F60BD1C2B34F800E39C3A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ConnectedDrive iOS";
+			productName = "ConnectedDrive iOS";
+			productReference = 521F60BF1C2B34F800E39C3A /* ConnectedDrive iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		521F60C71C2B34F800E39C3A /* ConnectedDrive iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 521F60D31C2B34F800E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive iOSTests" */;
+			buildPhases = (
+				521F60C41C2B34F800E39C3A /* Sources */,
+				521F60C51C2B34F800E39C3A /* Frameworks */,
+				521F60C61C2B34F800E39C3A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				521F60CB1C2B34F800E39C3A /* PBXTargetDependency */,
+			);
+			name = "ConnectedDrive iOSTests";
+			productName = "ConnectedDrive iOSTests";
+			productReference = 521F60C81C2B34F800E39C3A /* ConnectedDrive iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		521F60DA1C2B350900E39C3A /* ConnectedDrive tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 521F60EC1C2B350900E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive tvOS" */;
+			buildPhases = (
+				521F60D61C2B350900E39C3A /* Sources */,
+				521F60D71C2B350900E39C3A /* Frameworks */,
+				521F60D81C2B350900E39C3A /* Headers */,
+				521F60D91C2B350900E39C3A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ConnectedDrive tvOS";
+			productName = "ConnectedDrive tvOS";
+			productReference = 521F60DB1C2B350900E39C3A /* ConnectedDrive tvOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		521F60E31C2B350900E39C3A /* ConnectedDrive tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 521F60EF1C2B350900E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive tvOSTests" */;
+			buildPhases = (
+				521F60E01C2B350900E39C3A /* Sources */,
+				521F60E11C2B350900E39C3A /* Frameworks */,
+				521F60E21C2B350900E39C3A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				521F60E71C2B350900E39C3A /* PBXTargetDependency */,
+			);
+			name = "ConnectedDrive tvOSTests";
+			productName = "ConnectedDrive tvOSTests";
+			productReference = 521F60E41C2B350900E39C3A /* ConnectedDrive tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -152,6 +346,18 @@
 					521F60A91C2B34B500E39C3A = {
 						CreatedOnToolsVersion = 7.2;
 					};
+					521F60BE1C2B34F800E39C3A = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					521F60C71C2B34F800E39C3A = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					521F60DA1C2B350900E39C3A = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					521F60E31C2B350900E39C3A = {
+						CreatedOnToolsVersion = 7.2;
+					};
 				};
 			};
 			buildConfigurationList = 521F609A1C2B34B500E39C3A /* Build configuration list for PBXProject "ConnectedDrive" */;
@@ -166,8 +372,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				521F609F1C2B34B500E39C3A /* ConnectedDrive */,
-				521F60A91C2B34B500E39C3A /* ConnectedDriveTests */,
+				521F609F1C2B34B500E39C3A /* ConnectedDrive OSX */,
+				521F60A91C2B34B500E39C3A /* ConnectedDrive OSX Tests */,
+				521F60BE1C2B34F800E39C3A /* ConnectedDrive iOS */,
+				521F60C71C2B34F800E39C3A /* ConnectedDrive iOSTests */,
+				521F60DA1C2B350900E39C3A /* ConnectedDrive tvOS */,
+				521F60E31C2B350900E39C3A /* ConnectedDrive tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -181,6 +391,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		521F60A81C2B34B500E39C3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60BD1C2B34F800E39C3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60C61C2B34F800E39C3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60D91C2B350900E39C3A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60E21C2B350900E39C3A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -205,13 +443,53 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		521F60BA1C2B34F800E39C3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60C41C2B34F800E39C3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				521F60CE1C2B34F800E39C3A /* ConnectedDrive_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60D61C2B350900E39C3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		521F60E01C2B350900E39C3A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				521F60EA1C2B350900E39C3A /* ConnectedDrive_tvOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		521F60AD1C2B34B500E39C3A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 521F609F1C2B34B500E39C3A /* ConnectedDrive */;
+			target = 521F609F1C2B34B500E39C3A /* ConnectedDrive OSX */;
 			targetProxy = 521F60AC1C2B34B500E39C3A /* PBXContainerItemProxy */;
+		};
+		521F60CB1C2B34F800E39C3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 521F60BE1C2B34F800E39C3A /* ConnectedDrive iOS */;
+			targetProxy = 521F60CA1C2B34F800E39C3A /* PBXContainerItemProxy */;
+		};
+		521F60E71C2B350900E39C3A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 521F60DA1C2B350900E39C3A /* ConnectedDrive tvOS */;
+			targetProxy = 521F60E61C2B350900E39C3A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -360,6 +638,142 @@
 			};
 			name = Release;
 		};
+		521F60D11C2B34F800E39C3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "ConnectedDrive iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		521F60D21C2B34F800E39C3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "ConnectedDrive iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		521F60D41C2B34F800E39C3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "ConnectedDrive iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		521F60D51C2B34F800E39C3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "ConnectedDrive iOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		521F60ED1C2B350900E39C3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "ConnectedDrive tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		521F60EE1C2B350900E39C3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "ConnectedDrive tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		521F60F01C2B350900E39C3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "ConnectedDrive tvOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		521F60F11C2B350900E39C3A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "ConnectedDrive tvOSTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -372,7 +786,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		521F60B41C2B34B500E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive" */ = {
+		521F60B41C2B34B500E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				521F60B51C2B34B500E39C3A /* Debug */,
@@ -380,11 +794,43 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		521F60B71C2B34B500E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDriveTests" */ = {
+		521F60B71C2B34B500E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive OSX Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				521F60B81C2B34B500E39C3A /* Debug */,
 				521F60B91C2B34B500E39C3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		521F60D01C2B34F800E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				521F60D11C2B34F800E39C3A /* Debug */,
+				521F60D21C2B34F800E39C3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		521F60D31C2B34F800E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				521F60D41C2B34F800E39C3A /* Debug */,
+				521F60D51C2B34F800E39C3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		521F60EC1C2B350900E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				521F60ED1C2B350900E39C3A /* Debug */,
+				521F60EE1C2B350900E39C3A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		521F60EF1C2B350900E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				521F60F01C2B350900E39C3A /* Debug */,
+				521F60F11C2B350900E39C3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
