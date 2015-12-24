@@ -6,7 +6,8 @@
 //  Copyright © 2015 Ronald Mannak. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+
 
 //! Project version number for ConnectedDrive.
 FOUNDATION_EXPORT double ConnectedDriveVersionNumber;

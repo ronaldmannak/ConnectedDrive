@@ -8,14 +8,45 @@
 
 /* Begin PBXBuildFile section */
 		521F60A41C2B34B500E39C3A /* ConnectedDrive.h in Headers */ = {isa = PBXBuildFile; fileRef = 521F60A31C2B34B500E39C3A /* ConnectedDrive.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		521F60AB1C2B34B500E39C3A /* ConnectedDrive OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60A01C2B34B500E39C3A /* ConnectedDrive OSX.framework */; };
+		521F60AB1C2B34B500E39C3A /* ConnectedDrive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60A01C2B34B500E39C3A /* ConnectedDrive.framework */; };
 		521F60B01C2B34B500E39C3A /* ConnectedDriveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F60AF1C2B34B500E39C3A /* ConnectedDriveTests.swift */; };
-		521F60C21C2B34F800E39C3A /* ConnectedDrive iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 521F60C11C2B34F800E39C3A /* ConnectedDrive iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		521F60C91C2B34F800E39C3A /* ConnectedDrive iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60BF1C2B34F800E39C3A /* ConnectedDrive iOS.framework */; };
-		521F60CE1C2B34F800E39C3A /* ConnectedDrive_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F60CD1C2B34F800E39C3A /* ConnectedDrive_iOSTests.swift */; };
-		521F60DE1C2B350900E39C3A /* ConnectedDrive tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 521F60DD1C2B350900E39C3A /* ConnectedDrive tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		521F60E51C2B350900E39C3A /* ConnectedDrive tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60DB1C2B350900E39C3A /* ConnectedDrive tvOS.framework */; };
-		521F60EA1C2B350900E39C3A /* ConnectedDrive_tvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F60E91C2B350900E39C3A /* ConnectedDrive_tvOSTests.swift */; };
+		521F60C91C2B34F800E39C3A /* ConnectedDrive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60BF1C2B34F800E39C3A /* ConnectedDrive.framework */; };
+		521F60E51C2B350900E39C3A /* ConnectedDrive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60DB1C2B350900E39C3A /* ConnectedDrive.framework */; };
+		521F613D1C2CB9CF00E39C3A /* ConnectedDrive.h in Headers */ = {isa = PBXBuildFile; fileRef = 521F60A31C2B34B500E39C3A /* ConnectedDrive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		521F61461C2CBB2100E39C3A /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61411C2CBB2100E39C3A /* Credentials.swift */; };
+		521F61471C2CBB2100E39C3A /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61411C2CBB2100E39C3A /* Credentials.swift */; };
+		521F61481C2CBB2100E39C3A /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61411C2CBB2100E39C3A /* Credentials.swift */; };
+		521F61491C2CBB2100E39C3A /* RangeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61421C2CBB2100E39C3A /* RangeMap.swift */; };
+		521F614A1C2CBB2100E39C3A /* RangeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61421C2CBB2100E39C3A /* RangeMap.swift */; };
+		521F614B1C2CBB2100E39C3A /* RangeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61421C2CBB2100E39C3A /* RangeMap.swift */; };
+		521F614C1C2CBB2100E39C3A /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61431C2CBB2100E39C3A /* Vehicle.swift */; };
+		521F614D1C2CBB2100E39C3A /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61431C2CBB2100E39C3A /* Vehicle.swift */; };
+		521F614E1C2CBB2100E39C3A /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61431C2CBB2100E39C3A /* Vehicle.swift */; };
+		521F614F1C2CBB2100E39C3A /* VehicleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61441C2CBB2100E39C3A /* VehicleError.swift */; };
+		521F61501C2CBB2100E39C3A /* VehicleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61441C2CBB2100E39C3A /* VehicleError.swift */; };
+		521F61511C2CBB2100E39C3A /* VehicleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61441C2CBB2100E39C3A /* VehicleError.swift */; };
+		521F61521C2CBB2100E39C3A /* VehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61451C2CBB2100E39C3A /* VehicleStatus.swift */; };
+		521F61531C2CBB2100E39C3A /* VehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61451C2CBB2100E39C3A /* VehicleStatus.swift */; };
+		521F61541C2CBB2100E39C3A /* VehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61451C2CBB2100E39C3A /* VehicleStatus.swift */; };
+		521F615B1C2CBB3500E39C3A /* ConnectedDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61551C2CBB3500E39C3A /* ConnectedDrive.swift */; };
+		521F615C1C2CBB3500E39C3A /* ConnectedDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61551C2CBB3500E39C3A /* ConnectedDrive.swift */; };
+		521F615D1C2CBB3500E39C3A /* ConnectedDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61551C2CBB3500E39C3A /* ConnectedDrive.swift */; };
+		521F615E1C2CBB3500E39C3A /* ConnectedDriveEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61561C2CBB3500E39C3A /* ConnectedDriveEnums.swift */; };
+		521F615F1C2CBB3500E39C3A /* ConnectedDriveEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61561C2CBB3500E39C3A /* ConnectedDriveEnums.swift */; };
+		521F61601C2CBB3500E39C3A /* ConnectedDriveEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61561C2CBB3500E39C3A /* ConnectedDriveEnums.swift */; };
+		521F61611C2CBB3500E39C3A /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61571C2CBB3500E39C3A /* Decodable.swift */; };
+		521F61621C2CBB3500E39C3A /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61571C2CBB3500E39C3A /* Decodable.swift */; };
+		521F61631C2CBB3500E39C3A /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61571C2CBB3500E39C3A /* Decodable.swift */; };
+		521F61641C2CBB3500E39C3A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61581C2CBB3500E39C3A /* Keychain.swift */; };
+		521F61651C2CBB3500E39C3A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61581C2CBB3500E39C3A /* Keychain.swift */; };
+		521F61661C2CBB3500E39C3A /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61581C2CBB3500E39C3A /* Keychain.swift */; };
+		521F61671C2CBB3500E39C3A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61591C2CBB3500E39C3A /* Router.swift */; };
+		521F61681C2CBB3500E39C3A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61591C2CBB3500E39C3A /* Router.swift */; };
+		521F61691C2CBB3500E39C3A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61591C2CBB3500E39C3A /* Router.swift */; };
+		521F616A1C2CBB3500E39C3A /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F615A1C2CBB3500E39C3A /* Serializer.swift */; };
+		521F616B1C2CBB3500E39C3A /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F615A1C2CBB3500E39C3A /* Serializer.swift */; };
+		521F616C1C2CBB3500E39C3A /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F615A1C2CBB3500E39C3A /* Serializer.swift */; };
+		521F61711C2CBD9100E39C3A /* ConnectedDrive.h in Headers */ = {isa = PBXBuildFile; fileRef = 521F61701C2CBD9100E39C3A /* ConnectedDrive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,24 +74,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		521F60A01C2B34B500E39C3A /* ConnectedDrive OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ConnectedDrive OSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		521F60A31C2B34B500E39C3A /* ConnectedDrive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectedDrive.h; sourceTree = "<group>"; };
-		521F60A51C2B34B500E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		521F60A01C2B34B500E39C3A /* ConnectedDrive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConnectedDrive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		521F60A31C2B34B500E39C3A /* ConnectedDrive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectedDrive.h; path = ConnectedDrive/ConnectedDrive.h; sourceTree = "<group>"; };
+		521F60A51C2B34B500E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ConnectedDrive/Info.plist; sourceTree = "<group>"; };
 		521F60AA1C2B34B500E39C3A /* ConnectedDrive OSX Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConnectedDrive OSX Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		521F60AF1C2B34B500E39C3A /* ConnectedDriveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDriveTests.swift; sourceTree = "<group>"; };
 		521F60B11C2B34B500E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		521F60BF1C2B34F800E39C3A /* ConnectedDrive iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ConnectedDrive iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		521F60C11C2B34F800E39C3A /* ConnectedDrive iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConnectedDrive iOS.h"; sourceTree = "<group>"; };
-		521F60C31C2B34F800E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		521F60BF1C2B34F800E39C3A /* ConnectedDrive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConnectedDrive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		521F60C81C2B34F800E39C3A /* ConnectedDrive iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConnectedDrive iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		521F60CD1C2B34F800E39C3A /* ConnectedDrive_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDrive_iOSTests.swift; sourceTree = "<group>"; };
-		521F60CF1C2B34F800E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		521F60DB1C2B350900E39C3A /* ConnectedDrive tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ConnectedDrive tvOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		521F60DD1C2B350900E39C3A /* ConnectedDrive tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ConnectedDrive tvOS.h"; sourceTree = "<group>"; };
-		521F60DF1C2B350900E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		521F60DB1C2B350900E39C3A /* ConnectedDrive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConnectedDrive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		521F60E41C2B350900E39C3A /* ConnectedDrive tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConnectedDrive tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		521F60E91C2B350900E39C3A /* ConnectedDrive_tvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDrive_tvOSTests.swift; sourceTree = "<group>"; };
-		521F60EB1C2B350900E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		521F613F1C2CBA6700E39C3A /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "ConnectedDrive/Info-tvOS.plist"; sourceTree = "<group>"; };
+		521F61411C2CBB2100E39C3A /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Credentials.swift; path = ConnectedDrive/Credentials.swift; sourceTree = "<group>"; };
+		521F61421C2CBB2100E39C3A /* RangeMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeMap.swift; path = ConnectedDrive/RangeMap.swift; sourceTree = "<group>"; };
+		521F61431C2CBB2100E39C3A /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vehicle.swift; path = ConnectedDrive/Vehicle.swift; sourceTree = "<group>"; };
+		521F61441C2CBB2100E39C3A /* VehicleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VehicleError.swift; path = ConnectedDrive/VehicleError.swift; sourceTree = "<group>"; };
+		521F61451C2CBB2100E39C3A /* VehicleStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VehicleStatus.swift; path = ConnectedDrive/VehicleStatus.swift; sourceTree = "<group>"; };
+		521F61551C2CBB3500E39C3A /* ConnectedDrive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectedDrive.swift; path = ConnectedDrive/ConnectedDrive.swift; sourceTree = "<group>"; };
+		521F61561C2CBB3500E39C3A /* ConnectedDriveEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectedDriveEnums.swift; path = ConnectedDrive/ConnectedDriveEnums.swift; sourceTree = "<group>"; };
+		521F61571C2CBB3500E39C3A /* Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decodable.swift; path = ConnectedDrive/Decodable.swift; sourceTree = "<group>"; };
+		521F61581C2CBB3500E39C3A /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = ConnectedDrive/Keychain.swift; sourceTree = "<group>"; };
+		521F61591C2CBB3500E39C3A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = ConnectedDrive/Router.swift; sourceTree = "<group>"; };
+		521F615A1C2CBB3500E39C3A /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Serializer.swift; path = ConnectedDrive/Serializer.swift; sourceTree = "<group>"; };
+		521F616E1C2CBD7000E39C3A /* ConnectedDrive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectedDrive.h; path = ConnectedDrive/ConnectedDrive.h; sourceTree = "<group>"; };
+		521F61701C2CBD9100E39C3A /* ConnectedDrive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectedDrive.h; path = ConnectedDrive/ConnectedDrive.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521F60AB1C2B34B500E39C3A /* ConnectedDrive OSX.framework in Frameworks */,
+				521F60AB1C2B34B500E39C3A /* ConnectedDrive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521F60C91C2B34F800E39C3A /* ConnectedDrive iOS.framework in Frameworks */,
+				521F60C91C2B34F800E39C3A /* ConnectedDrive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521F60E51C2B350900E39C3A /* ConnectedDrive tvOS.framework in Frameworks */,
+				521F60E51C2B350900E39C3A /* ConnectedDrive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,12 +152,10 @@
 		521F60961C2B34B500E39C3A = {
 			isa = PBXGroup;
 			children = (
-				521F60A21C2B34B500E39C3A /* ConnectedDrive */,
+				521F61701C2CBD9100E39C3A /* ConnectedDrive.h */,
+				521F616E1C2CBD7000E39C3A /* ConnectedDrive.h */,
+				521F613B1C2CB98C00E39C3A /* Source */,
 				521F60AE1C2B34B500E39C3A /* ConnectedDriveTests */,
-				521F60C01C2B34F800E39C3A /* ConnectedDrive iOS */,
-				521F60CC1C2B34F800E39C3A /* ConnectedDrive iOSTests */,
-				521F60DC1C2B350900E39C3A /* ConnectedDrive tvOS */,
-				521F60E81C2B350900E39C3A /* ConnectedDrive tvOSTests */,
 				521F60A11C2B34B500E39C3A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -128,23 +163,14 @@
 		521F60A11C2B34B500E39C3A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				521F60A01C2B34B500E39C3A /* ConnectedDrive OSX.framework */,
+				521F60A01C2B34B500E39C3A /* ConnectedDrive.framework */,
 				521F60AA1C2B34B500E39C3A /* ConnectedDrive OSX Tests.xctest */,
-				521F60BF1C2B34F800E39C3A /* ConnectedDrive iOS.framework */,
+				521F60BF1C2B34F800E39C3A /* ConnectedDrive.framework */,
 				521F60C81C2B34F800E39C3A /* ConnectedDrive iOSTests.xctest */,
-				521F60DB1C2B350900E39C3A /* ConnectedDrive tvOS.framework */,
+				521F60DB1C2B350900E39C3A /* ConnectedDrive.framework */,
 				521F60E41C2B350900E39C3A /* ConnectedDrive tvOSTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		521F60A21C2B34B500E39C3A /* ConnectedDrive */ = {
-			isa = PBXGroup;
-			children = (
-				521F60A31C2B34B500E39C3A /* ConnectedDrive.h */,
-				521F60A51C2B34B500E39C3A /* Info.plist */,
-			);
-			path = ConnectedDrive;
 			sourceTree = "<group>";
 		};
 		521F60AE1C2B34B500E39C3A /* ConnectedDriveTests */ = {
@@ -156,40 +182,41 @@
 			path = ConnectedDriveTests;
 			sourceTree = "<group>";
 		};
-		521F60C01C2B34F800E39C3A /* ConnectedDrive iOS */ = {
+		521F613B1C2CB98C00E39C3A /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				521F60C11C2B34F800E39C3A /* ConnectedDrive iOS.h */,
-				521F60C31C2B34F800E39C3A /* Info.plist */,
+				521F61551C2CBB3500E39C3A /* ConnectedDrive.swift */,
+				521F61561C2CBB3500E39C3A /* ConnectedDriveEnums.swift */,
+				521F61571C2CBB3500E39C3A /* Decodable.swift */,
+				521F61581C2CBB3500E39C3A /* Keychain.swift */,
+				521F61591C2CBB3500E39C3A /* Router.swift */,
+				521F615A1C2CBB3500E39C3A /* Serializer.swift */,
+				521F61401C2CBAFA00E39C3A /* Models */,
+				521F613C1C2CB99200E39C3A /* Supporting Files */,
 			);
-			path = "ConnectedDrive iOS";
+			name = Source;
 			sourceTree = "<group>";
 		};
-		521F60CC1C2B34F800E39C3A /* ConnectedDrive iOSTests */ = {
+		521F613C1C2CB99200E39C3A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				521F60CD1C2B34F800E39C3A /* ConnectedDrive_iOSTests.swift */,
-				521F60CF1C2B34F800E39C3A /* Info.plist */,
+				521F60A31C2B34B500E39C3A /* ConnectedDrive.h */,
+				521F60A51C2B34B500E39C3A /* Info.plist */,
+				521F613F1C2CBA6700E39C3A /* Info-tvOS.plist */,
 			);
-			path = "ConnectedDrive iOSTests";
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		521F60DC1C2B350900E39C3A /* ConnectedDrive tvOS */ = {
+		521F61401C2CBAFA00E39C3A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				521F60DD1C2B350900E39C3A /* ConnectedDrive tvOS.h */,
-				521F60DF1C2B350900E39C3A /* Info.plist */,
+				521F61411C2CBB2100E39C3A /* Credentials.swift */,
+				521F61421C2CBB2100E39C3A /* RangeMap.swift */,
+				521F61431C2CBB2100E39C3A /* Vehicle.swift */,
+				521F61441C2CBB2100E39C3A /* VehicleError.swift */,
+				521F61451C2CBB2100E39C3A /* VehicleStatus.swift */,
 			);
-			path = "ConnectedDrive tvOS";
-			sourceTree = "<group>";
-		};
-		521F60E81C2B350900E39C3A /* ConnectedDrive tvOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				521F60E91C2B350900E39C3A /* ConnectedDrive_tvOSTests.swift */,
-				521F60EB1C2B350900E39C3A /* Info.plist */,
-			);
-			path = "ConnectedDrive tvOSTests";
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,8 +234,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521F60DE1C2B350900E39C3A /* ConnectedDrive tvOS.h in Headers */,
-				521F60C21C2B34F800E39C3A /* ConnectedDrive iOS.h in Headers */,
+				521F613D1C2CB9CF00E39C3A /* ConnectedDrive.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +242,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521F61711C2CBD9100E39C3A /* ConnectedDrive.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +264,7 @@
 			);
 			name = "ConnectedDrive OSX";
 			productName = ConnectedDrive;
-			productReference = 521F60A01C2B34B500E39C3A /* ConnectedDrive OSX.framework */;
+			productReference = 521F60A01C2B34B500E39C3A /* ConnectedDrive.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		521F60A91C2B34B500E39C3A /* ConnectedDrive OSX Tests */ = {
@@ -273,7 +300,7 @@
 			);
 			name = "ConnectedDrive iOS";
 			productName = "ConnectedDrive iOS";
-			productReference = 521F60BF1C2B34F800E39C3A /* ConnectedDrive iOS.framework */;
+			productReference = 521F60BF1C2B34F800E39C3A /* ConnectedDrive.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		521F60C71C2B34F800E39C3A /* ConnectedDrive iOSTests */ = {
@@ -309,7 +336,7 @@
 			);
 			name = "ConnectedDrive tvOS";
 			productName = "ConnectedDrive tvOS";
-			productReference = 521F60DB1C2B350900E39C3A /* ConnectedDrive tvOS.framework */;
+			productReference = 521F60DB1C2B350900E39C3A /* ConnectedDrive.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		521F60E31C2B350900E39C3A /* ConnectedDrive tvOSTests */ = {
@@ -432,6 +459,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521F614C1C2CBB2100E39C3A /* Vehicle.swift in Sources */,
+				521F615E1C2CBB3500E39C3A /* ConnectedDriveEnums.swift in Sources */,
+				521F61671C2CBB3500E39C3A /* Router.swift in Sources */,
+				521F61491C2CBB2100E39C3A /* RangeMap.swift in Sources */,
+				521F61461C2CBB2100E39C3A /* Credentials.swift in Sources */,
+				521F616A1C2CBB3500E39C3A /* Serializer.swift in Sources */,
+				521F614F1C2CBB2100E39C3A /* VehicleError.swift in Sources */,
+				521F61641C2CBB3500E39C3A /* Keychain.swift in Sources */,
+				521F61611C2CBB3500E39C3A /* Decodable.swift in Sources */,
+				521F615B1C2CBB3500E39C3A /* ConnectedDrive.swift in Sources */,
+				521F61521C2CBB2100E39C3A /* VehicleStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +485,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521F614D1C2CBB2100E39C3A /* Vehicle.swift in Sources */,
+				521F615F1C2CBB3500E39C3A /* ConnectedDriveEnums.swift in Sources */,
+				521F61681C2CBB3500E39C3A /* Router.swift in Sources */,
+				521F614A1C2CBB2100E39C3A /* RangeMap.swift in Sources */,
+				521F61471C2CBB2100E39C3A /* Credentials.swift in Sources */,
+				521F616B1C2CBB3500E39C3A /* Serializer.swift in Sources */,
+				521F61501C2CBB2100E39C3A /* VehicleError.swift in Sources */,
+				521F61651C2CBB3500E39C3A /* Keychain.swift in Sources */,
+				521F61621C2CBB3500E39C3A /* Decodable.swift in Sources */,
+				521F615C1C2CBB3500E39C3A /* ConnectedDrive.swift in Sources */,
+				521F61531C2CBB2100E39C3A /* VehicleStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +503,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521F60CE1C2B34F800E39C3A /* ConnectedDrive_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +510,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521F614E1C2CBB2100E39C3A /* Vehicle.swift in Sources */,
+				521F61601C2CBB3500E39C3A /* ConnectedDriveEnums.swift in Sources */,
+				521F61691C2CBB3500E39C3A /* Router.swift in Sources */,
+				521F614B1C2CBB2100E39C3A /* RangeMap.swift in Sources */,
+				521F61481C2CBB2100E39C3A /* Credentials.swift in Sources */,
+				521F616C1C2CBB3500E39C3A /* Serializer.swift in Sources */,
+				521F61511C2CBB2100E39C3A /* VehicleError.swift in Sources */,
+				521F61661C2CBB3500E39C3A /* Keychain.swift in Sources */,
+				521F61631C2CBB3500E39C3A /* Decodable.swift in Sources */,
+				521F615D1C2CBB3500E39C3A /* ConnectedDrive.swift in Sources */,
+				521F61541C2CBB2100E39C3A /* VehicleStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +528,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521F60EA1C2B350900E39C3A /* ConnectedDrive_tvOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +641,7 @@
 		521F60B51C2B34B500E39C3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -593,14 +652,16 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ronaldmannak.ConnectedDrive;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ConnectedDrive;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		521F60B61C2B34B500E39C3A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -611,7 +672,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ronaldmannak.ConnectedDrive;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ConnectedDrive;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -641,19 +702,21 @@
 		521F60D11C2B34F800E39C3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "ConnectedDrive iOS/Info.plist";
+				INFOPLIST_FILE = ConnectedDrive/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ConnectedDrive;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -661,17 +724,18 @@
 		521F60D21C2B34F800E39C3A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "ConnectedDrive iOS/Info.plist";
+				INFOPLIST_FILE = ConnectedDrive/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ConnectedDrive;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -709,19 +773,23 @@
 		521F60ED1C2B350900E39C3A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "ConnectedDrive tvOS/Info.plist";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "ConnectedDrive/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-tvOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ConnectedDrive;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -729,17 +797,20 @@
 		521F60EE1C2B350900E39C3A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "ConnectedDrive tvOS/Info.plist";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "ConnectedDrive/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ronaldmannak.ConnectedDrive-tvOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ConnectedDrive;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -793,6 +864,7 @@
 				521F60B61C2B34B500E39C3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		521F60B71C2B34B500E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive OSX Tests" */ = {
 			isa = XCConfigurationList;
@@ -801,6 +873,7 @@
 				521F60B91C2B34B500E39C3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		521F60D01C2B34F800E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive iOS" */ = {
 			isa = XCConfigurationList;
@@ -809,6 +882,7 @@
 				521F60D21C2B34F800E39C3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		521F60D31C2B34F800E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -817,6 +891,7 @@
 				521F60D51C2B34F800E39C3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		521F60EC1C2B350900E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive tvOS" */ = {
 			isa = XCConfigurationList;
@@ -825,6 +900,7 @@
 				521F60EE1C2B350900E39C3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		521F60EF1C2B350900E39C3A /* Build configuration list for PBXNativeTarget "ConnectedDrive tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -833,6 +909,7 @@
 				521F60F11C2B350900E39C3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
