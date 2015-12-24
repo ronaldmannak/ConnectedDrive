@@ -1,1 +1,3 @@
 Example/OSX/ExampleOSX/Info.plist
+Example/OSX/Pods
+Example/OSX/Podfile.lock
