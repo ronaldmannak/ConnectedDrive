@@ -283,7 +283,8 @@ extension AppDelegate {
         if menu.itemArray.last != NSMenuItem.separatorItem() {
             menu.addItem(NSMenuItem.separatorItem())
         }
-        menu.addItem(NSMenuItem(title: NSLocalizedString("Quit", comment: ""), action: Selector("terminate:"), keyEquivalent: "q"))
+        menu.addItemWithTitle(NSLocalizedString("Log out", comment: ""), action: Selector("logout:"), keyEquivalent: "l")
+        menu.addItemWithTitle(NSLocalizedString("Quit", comment: ""), action: Selector("terminate:"), keyEquivalent: "q")
         return menu
     }
 
