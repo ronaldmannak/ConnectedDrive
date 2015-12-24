@@ -362,8 +362,10 @@ extension AppDelegate {
                 let polygon = MKPolygon(coordinates: &polyLine, count: polyLine.count)
                 mapView.addOverlay(polygon, level: .AboveRoads)
                 
-                // TODO: zoom in on biggest bounding map rect
-                mapView.setVisibleMapRect(polygon.boundingMapRect, edgePadding: NSEdgeInsets(top: 10, left: 10, bottom: 10, right: 10), animated: false)
+                // Make sure all ranges fit in window
+                if polyLineStruct.type == .EcoProPlus {
+                    mapView.setVisibleMapRect(polygon.boundingMapRect, edgePadding: NSEdgeInsets(top: 10, left: 10, bottom: 10, right: 10), animated: false)
+                }
             }
         }
         
