@@ -25,6 +25,7 @@
 		521F61341C2B379B00E39C3A /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61291C2B379B00E39C3A /* Vehicle.swift */; };
 		521F61351C2B379B00E39C3A /* VehicleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F612A1C2B379B00E39C3A /* VehicleError.swift */; };
 		521F61361C2B379B00E39C3A /* VehicleStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F612B1C2B379B00E39C3A /* VehicleStatus.swift */; };
+		521F61391C2BCEC400E39C3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 521F61371C2BCEC400E39C3A /* Localizable.strings */; };
 		9DB3E324AAC1330B7C47AE1C /* Pods_ExampleOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAC70CF0CE12FE334750F07 /* Pods_ExampleOSX.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		521F61291C2B379B00E39C3A /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vehicle.swift; path = ../../ConnectedDrive/Vehicle.swift; sourceTree = "<group>"; };
 		521F612A1C2B379B00E39C3A /* VehicleError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VehicleError.swift; path = ../../ConnectedDrive/VehicleError.swift; sourceTree = "<group>"; };
 		521F612B1C2B379B00E39C3A /* VehicleStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VehicleStatus.swift; path = ../../ConnectedDrive/VehicleStatus.swift; sourceTree = "<group>"; };
+		521F61381C2BCEC400E39C3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../../ConnectedDrive/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		571A0F3E0CEDB724A098C710 /* Pods-ExampleOSX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleOSX.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleOSX/Pods-ExampleOSX.release.xcconfig"; sourceTree = "<group>"; };
 		5AAC70CF0CE12FE334750F07 /* Pods_ExampleOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExampleOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F380AA75FF82E5E3EDAC4AB /* Pods-ExampleOSX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleOSX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleOSX/Pods-ExampleOSX.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				521F61291C2B379B00E39C3A /* Vehicle.swift */,
 				521F612A1C2B379B00E39C3A /* VehicleError.swift */,
 				521F612B1C2B379B00E39C3A /* VehicleStatus.swift */,
+				521F61371C2BCEC400E39C3A /* Localizable.strings */,
 			);
 			name = ConnectedDrive;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				521F61011C2B355700E39C3A /* Assets.xcassets in Resources */,
+				521F61391C2BCEC400E39C3A /* Localizable.strings in Resources */,
 				521F61041C2B355700E39C3A /* MainMenu.xib in Resources */,
 				521F61201C2B375F00E39C3A /* LoginViewController.xib in Resources */,
 			);
@@ -358,6 +362,14 @@
 				521F61031C2B355700E39C3A /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		521F61371C2BCEC400E39C3A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				521F61381C2BCEC400E39C3A /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
