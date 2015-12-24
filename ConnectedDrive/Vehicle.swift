@@ -104,9 +104,6 @@ extension Vehicle: Decodable {
     
     static func decode(json: AnyObject) throws -> Vehicle {
         
-        let year = try! json => "yearOfConstruction"
-        print("\(year)")
-        
         return try Vehicle(
             model: BMWiModel(rawValue: json => "model")!,
             bodyType: json => "bodytype",

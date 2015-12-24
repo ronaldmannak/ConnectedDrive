@@ -44,6 +44,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        connectedDrive.deleteStoredItems() // For debug purposes only
         connectedDrive.delegate = self
         
+        // Register for sleep and wake notifications
+        NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self, selector: Selector("wakeNotification:"), name: NSWorkspaceDidWakeNotification, object: nil)
+        NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self, selector: Selector("sleepNotification:"), name: NSWorkspaceWillSleepNotification, object: nil)
+        
         // Create EventMonitor to hide popup windows when user clicks elsewhere on the screen
         eventMonitor = EventMonitor(mask: NSEventMask.LeftMouseDownMask) { [unowned self] event in
             if self.popup.shown {
@@ -55,6 +59,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         connectedDrive.autoLogin { result in
             self.updateOnScreenStatus()
         }
+    }
+    
+    func applicationWillTerminate(notification: NSNotification) {
+        NSWorkspace.sharedWorkspace().notificationCenter.removeObserver(self)
+    }
+    
+
+    func wakeNotification(notification: NSNotification) {
+        connectedDrive.autoLogin { result in
+            self.createTimer(.Regular)
+        }
+    }
+    
+    func sleepNotification(notification: NSNotification) {
+        removeTimer()
     }
 }
 
@@ -86,7 +105,7 @@ extension AppDelegate {
                 self.vehicleList = vehicles
                 self.vehicle = vehicles.first
                 
-                self.fetchStatusFromServer()
+                self.createTimer(.Regular) // Timer fetches vehicle status immediately
                 
             case .Failure(let error):
                 // TODO:
