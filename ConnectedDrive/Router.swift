@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-enum Router: URLRequestConvertible {
+public enum Router: URLRequestConvertible {
     
     static var APIKey: String {
         guard let info = NSBundle.mainBundle().infoDictionary, APIKey = info["APIKey"] as? String else {
@@ -30,7 +30,7 @@ enum Router: URLRequestConvertible {
     case ExecuteService(VIN: String, service: VehicleService, login: Credentials)
     case ChargingStations(login: Credentials)
 
-    var method: Alamofire.Method {
+    private var method: Alamofire.Method {
         switch self {
         case .Login(_,_,_), .ExecuteService(_,_,_):
             return .POST
@@ -39,7 +39,7 @@ enum Router: URLRequestConvertible {
         }
     }
     
-    var accessToken: String {
+    private var accessToken: String {
         switch self {
         case Login(_, _, _):
             return ""
@@ -66,7 +66,7 @@ enum Router: URLRequestConvertible {
         }
     }
     
-    var baseURLString: String {
+    private var baseURLString: String {
         switch self {
         case .Login(_, _, let hub):
             return hub.baseURLString
@@ -93,7 +93,7 @@ enum Router: URLRequestConvertible {
         }
     }
     
-    var path: String {
+    private var path: String {
         switch self {
         case .Login(_,_,_):
             return "webapi/oauth/token/"
@@ -120,7 +120,7 @@ enum Router: URLRequestConvertible {
         }
     }
     
-    var parameters: [String : AnyObject]? {
+    private var parameters: [String : AnyObject]? {
         switch self {
 //        case .VehicleStatus:
 //            return ["deviceTime" : "2015-12-10T16:47:03-500"] // deviceTime seems to be optional
@@ -136,7 +136,7 @@ enum Router: URLRequestConvertible {
         }
     }
     
-    var authorizationHeader: String {
+    private var authorizationHeader: String {
         switch self {
         case .Login(_,_,_):
             return "Basic " + Router.APIKey
@@ -145,7 +145,7 @@ enum Router: URLRequestConvertible {
         }
     }
     
-    var URLRequest: NSMutableURLRequest {
+    public var URLRequest: NSMutableURLRequest {
         
         let URL = NSURL(string: baseURLString)!
         let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))

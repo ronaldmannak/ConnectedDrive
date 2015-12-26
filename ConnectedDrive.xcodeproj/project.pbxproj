@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		521F60A41C2B34B500E39C3A /* ConnectedDrive.h in Headers */ = {isa = PBXBuildFile; fileRef = 521F60A31C2B34B500E39C3A /* ConnectedDrive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		521F60AB1C2B34B500E39C3A /* ConnectedDrive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60A01C2B34B500E39C3A /* ConnectedDrive.framework */; };
 		521F60B01C2B34B500E39C3A /* ConnectedDriveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F60AF1C2B34B500E39C3A /* ConnectedDriveTests.swift */; };
 		521F60C91C2B34F800E39C3A /* ConnectedDrive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60BF1C2B34F800E39C3A /* ConnectedDrive.framework */; };
 		521F60E51C2B350900E39C3A /* ConnectedDrive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521F60DB1C2B350900E39C3A /* ConnectedDrive.framework */; };
-		521F613D1C2CB9CF00E39C3A /* ConnectedDrive.h in Headers */ = {isa = PBXBuildFile; fileRef = 521F60A31C2B34B500E39C3A /* ConnectedDrive.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		521F61461C2CBB2100E39C3A /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61411C2CBB2100E39C3A /* Credentials.swift */; };
 		521F61471C2CBB2100E39C3A /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61411C2CBB2100E39C3A /* Credentials.swift */; };
 		521F61481C2CBB2100E39C3A /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F61411C2CBB2100E39C3A /* Credentials.swift */; };
@@ -46,7 +44,9 @@
 		521F616A1C2CBB3500E39C3A /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F615A1C2CBB3500E39C3A /* Serializer.swift */; };
 		521F616B1C2CBB3500E39C3A /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F615A1C2CBB3500E39C3A /* Serializer.swift */; };
 		521F616C1C2CBB3500E39C3A /* Serializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F615A1C2CBB3500E39C3A /* Serializer.swift */; };
-		521F61711C2CBD9100E39C3A /* ConnectedDrive.h in Headers */ = {isa = PBXBuildFile; fileRef = 521F61701C2CBD9100E39C3A /* ConnectedDrive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		521F617D1C2E441B00E39C3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 521F617B1C2E441B00E39C3A /* Localizable.strings */; };
+		521F617E1C2E441B00E39C3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 521F617B1C2E441B00E39C3A /* Localizable.strings */; };
+		521F617F1C2E441B00E39C3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 521F617B1C2E441B00E39C3A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,6 @@
 
 /* Begin PBXFileReference section */
 		521F60A01C2B34B500E39C3A /* ConnectedDrive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConnectedDrive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		521F60A31C2B34B500E39C3A /* ConnectedDrive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectedDrive.h; path = ConnectedDrive/ConnectedDrive.h; sourceTree = "<group>"; };
 		521F60A51C2B34B500E39C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ConnectedDrive/Info.plist; sourceTree = "<group>"; };
 		521F60AA1C2B34B500E39C3A /* ConnectedDrive OSX Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ConnectedDrive OSX Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		521F60AF1C2B34B500E39C3A /* ConnectedDriveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedDriveTests.swift; sourceTree = "<group>"; };
@@ -97,7 +96,7 @@
 		521F61591C2CBB3500E39C3A /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Router.swift; path = ConnectedDrive/Router.swift; sourceTree = "<group>"; };
 		521F615A1C2CBB3500E39C3A /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Serializer.swift; path = ConnectedDrive/Serializer.swift; sourceTree = "<group>"; };
 		521F616E1C2CBD7000E39C3A /* ConnectedDrive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectedDrive.h; path = ConnectedDrive/ConnectedDrive.h; sourceTree = "<group>"; };
-		521F61701C2CBD9100E39C3A /* ConnectedDrive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectedDrive.h; path = ConnectedDrive/ConnectedDrive.h; sourceTree = "<group>"; };
+		521F617C1C2E441B00E39C3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ConnectedDrive/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,8 +151,6 @@
 		521F60961C2B34B500E39C3A = {
 			isa = PBXGroup;
 			children = (
-				521F61701C2CBD9100E39C3A /* ConnectedDrive.h */,
-				521F616E1C2CBD7000E39C3A /* ConnectedDrive.h */,
 				521F613B1C2CB98C00E39C3A /* Source */,
 				521F60AE1C2B34B500E39C3A /* ConnectedDriveTests */,
 				521F60A11C2B34B500E39C3A /* Products */,
@@ -200,9 +197,10 @@
 		521F613C1C2CB99200E39C3A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				521F60A31C2B34B500E39C3A /* ConnectedDrive.h */,
+				521F616E1C2CBD7000E39C3A /* ConnectedDrive.h */,
 				521F60A51C2B34B500E39C3A /* Info.plist */,
 				521F613F1C2CBA6700E39C3A /* Info-tvOS.plist */,
+				521F617B1C2E441B00E39C3A /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -226,7 +224,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521F60A41C2B34B500E39C3A /* ConnectedDrive.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +231,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521F613D1C2CB9CF00E39C3A /* ConnectedDrive.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +238,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				521F61711C2CBD9100E39C3A /* ConnectedDrive.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521F617D1C2E441B00E39C3A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +424,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521F617E1C2E441B00E39C3A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +439,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521F617F1C2E441B00E39C3A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +548,17 @@
 			targetProxy = 521F60E61C2B350900E39C3A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		521F617B1C2E441B00E39C3A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				521F617C1C2E441B00E39C3A /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		521F60B21C2B34B500E39C3A /* Debug */ = {

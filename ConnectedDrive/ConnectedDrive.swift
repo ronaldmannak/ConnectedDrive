@@ -9,13 +9,8 @@
 import Foundation
 import Alamofire
 
-struct Credentials {
-    let hub: BMWHub
-    let tokens: Tokens
-}
-
 // Replace protocol with NSErrors?
-protocol ConnectedDriveDelegate: class {
+public protocol ConnectedDriveDelegate: class {
     
     /**
      ConnectedDrive started fetching data from the server
@@ -43,15 +38,15 @@ protocol ConnectedDriveDelegate: class {
     func didLogout()
 }
 
-class ConnectedDrive {
+public class ConnectedDrive {
     
-    enum State {
+    public enum State {
         case LoggedOut
         case LoggingIn
         case LoggedIn
     }
     
-    weak var delegate: ConnectedDriveDelegate?
+    public weak var delegate: ConnectedDriveDelegate?
     
     private var credentials: Credentials?
 
@@ -108,7 +103,7 @@ class ConnectedDrive {
         return credentials != nil && username != nil && password != nil
     }
     
-    var state: State = .LoggedOut
+    public var state: State = .LoggedOut
     
     private static let notLoggedInError = VehicleError.errorWithCode(.NotLoggedIn, failureReason: "Not logged in")
     
@@ -120,7 +115,7 @@ class ConnectedDrive {
 
 extension ConnectedDrive {
     
-    func login(username: String, password: String, completion:(Result<Credentials, NSError>) -> Void) {
+    public func login(username: String, password: String, completion:(Result<Credentials, NSError>) -> Void) {
         
         // Log out so no server calls can be made while logging in is in progress
         logout()
@@ -150,7 +145,7 @@ extension ConnectedDrive {
         }
     }
     
-    func autoLogin(hub: BMWHub? = nil, completion:(Result<Credentials, NSError>) -> Void) {
+    public func autoLogin(hub: BMWHub? = nil, completion:(Result<Credentials, NSError>) -> Void) {
         
         guard let password = password, username = username, hub = hub ?? lastUsedHub else {
             delegate?.shouldPresentLoginWindow()
@@ -162,10 +157,12 @@ extension ConnectedDrive {
         login(username, password: password, completion: completion)
     }
     
-    func logout() {
+    public func logout(deleteStoredPassword: Bool = false) {
         
-        username = nil
-        password = nil
+        if deleteStoredPassword {
+            username = nil
+            password = nil
+        }
         credentials = nil
         state = .LoggedOut
         
@@ -179,7 +176,7 @@ extension ConnectedDrive {
 
 extension ConnectedDrive {
     
-    typealias ConfineServer = (credentials: Credentials?) -> Void
+    public typealias ConfineServer = (credentials: Credentials?) -> Void
     
     /**
      Fetches list of vehicles from server. All geographically different BMW servers return the same vehicle list.
@@ -187,7 +184,7 @@ extension ConnectedDrive {
      - parameter completion: Invoked when server returns data. Result is either Result.Success([Vehicle]) or Result.Failure(NSError)
      */
     
-    func vehicles(completion: (Result<[Vehicle], NSError>) -> Void) {
+    public func vehicles(completion: (Result<[Vehicle], NSError>) -> Void) {
         
         guard let credentials = credentials else {
             completion(Result.Failure(ConnectedDrive.notLoggedInError))
@@ -218,7 +215,7 @@ extension ConnectedDrive {
      - parameter vehicle:    Vehicle
      - parameter completion: Invoked when server returns data. Result is either Result.Success(VehicleStatus) or Result.Failure(NSError)
      */
-    func vehicleStatus(vehicle: Vehicle, completion: (Result<VehicleStatus, NSError>) -> Void) {
+    public func vehicleStatus(vehicle: Vehicle, completion: (Result<VehicleStatus, NSError>) -> Void) {
         
         let vehicleStatus: ConfineServer = { credentials in
             
@@ -237,7 +234,7 @@ extension ConnectedDrive {
     }
     
     
-    func rangeMap(vehicle: Vehicle, completion: (Result<RangeMap, NSError>) -> Void) {
+    public func rangeMap(vehicle: Vehicle, completion: (Result<RangeMap, NSError>) -> Void) {
         
         let rangeMap: ConfineServer = { credentials in
             
@@ -283,7 +280,7 @@ extension ConnectedDrive {
     /**
      For debug purposes
      */
-    func deleteStoredItems() {
+    public func deleteStoredItems() {
         Keychain.delete("username")
         Keychain.delete("password")
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "LastUsedHub")

@@ -12,7 +12,7 @@ import Decodable
 
 /// BMW server addresses. The rawvalues correspond with "hub" value of the server vehicle list.
 
-enum BMWHub: String {
+public enum BMWHub: String {
     
     case China                  = "HUB_CN"
     case Europe                 = "HUB_ECE"         // And rest of the world
@@ -30,7 +30,7 @@ enum BMWHub: String {
     }
 }
 
-enum ChargingStatus: String {
+public enum ChargingStatus: String {
     
     case NotConnected           = "INVALID"
     case Charging               = "CHARGING"
@@ -54,7 +54,7 @@ enum ChargingStatus: String {
     }
 }
 
-enum ConnectionStatus: String {
+public enum ConnectionStatus: String {
     case Connected              = "CONNECTED"
     case ChargingDone           = "CHARGING_DONE"
     case ChargingInterrupted    = "CHARGING_INTERRUPED"
@@ -90,7 +90,7 @@ enum ConnectionStatus: String {
     }
 }
 
-enum DoorStatus: String {
+public enum DoorStatus: String {
     case Open                   = "OPEN"
     case Closed                 = "CLOSED"
     case Secured                = "SECURED"
@@ -110,7 +110,7 @@ enum DoorStatus: String {
     }
 }
 
-enum LightStatus: String {
+public enum LightStatus: String {
     case On                     = "ON"
     case Off                    = "OFF"
     case Invalid                = "Invalid"
@@ -129,7 +129,7 @@ enum LightStatus: String {
     }
 }
 
-enum VehicleService: String {
+public enum VehicleService: String {
     case ChargeNow              = "CHARGE_NOW"
     case ChargingControl        = "CHARGING_CONTROL"
     case ClimateControl         = "CLIMATE_CONTROL"

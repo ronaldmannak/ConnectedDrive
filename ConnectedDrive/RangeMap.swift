@@ -10,37 +10,37 @@ import Foundation
 import CoreLocation
 import Decodable
 
-struct RangeMap {
+public struct RangeMap {
     
-    let center: CLLocationCoordinate2D
-    let polyLines: [RangeMapPolyLine]
-    let quality: String
+    public let center: CLLocationCoordinate2D
+    public let polyLines: [RangeMapPolyLine]
+    public let quality: String
 }
 
 extension RangeMap: Decodable {
 
-    static func decode(json: AnyObject) throws -> RangeMap {
+    public static func decode(json: AnyObject) throws -> RangeMap {
         let rangeMapJSON = try json => "rangemap"
         return RangeMap(center: try rangeMapJSON => "center", polyLines: try rangeMapJSON => "rangemaps", quality: try rangeMapJSON => "quality")
     }
 }
 
 
-struct RangeMapPolyLine {
+public struct RangeMapPolyLine {
     
-    enum RangeMapPolyLineType: String {
+    public enum RangeMapPolyLineType: String {
         case Comfort =      "COMFORT"
         case EcoPro =       "ECO_PRO"
         case EcoProPlus =   "ECO_PRO_PLUS"
     }
     
-    let type: RangeMapPolyLineType
-    let polyLine: [CLLocationCoordinate2D]
+    public let type: RangeMapPolyLineType
+    public let polyLine: [CLLocationCoordinate2D]
 }
 
 extension RangeMapPolyLine: Decodable {
     
-    static func decode(json: AnyObject) throws -> RangeMapPolyLine {
+    public static func decode(json: AnyObject) throws -> RangeMapPolyLine {
         
         let type = try RangeMapPolyLineType(rawValue: json => "type")!
         let polyLine = try [CLLocationCoordinate2D].decode(json => "polyline")

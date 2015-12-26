@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-               BuildableName = "ConnectedDrive OSX.framework"
+               BuildableName = "ConnectedDrive.framework"
                BlueprintName = "ConnectedDrive OSX"
                ReferencedContainer = "container:ConnectedDrive.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-            BuildableName = "ConnectedDrive OSX.framework"
+            BuildableName = "ConnectedDrive.framework"
             BlueprintName = "ConnectedDrive OSX"
             ReferencedContainer = "container:ConnectedDrive.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-            BuildableName = "ConnectedDrive OSX.framework"
+            BuildableName = "ConnectedDrive.framework"
             BlueprintName = "ConnectedDrive OSX"
             ReferencedContainer = "container:ConnectedDrive.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "521F609F1C2B34B500E39C3A"
-            BuildableName = "ConnectedDrive OSX.framework"
+            BuildableName = "ConnectedDrive.framework"
             BlueprintName = "ConnectedDrive OSX"
             ReferencedContainer = "container:ConnectedDrive.xcodeproj">
          </BuildableReference>

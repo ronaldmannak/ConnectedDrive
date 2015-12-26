@@ -9,6 +9,10 @@
 import Foundation
 import Decodable
 
+public struct Credentials {
+    let hub: BMWHub
+    let tokens: Tokens
+}
 
 struct Tokens {
 

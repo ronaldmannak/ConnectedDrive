@@ -9,12 +9,12 @@
 import Foundation
 import Decodable
 
-enum DriveTrain: String {
+public enum DriveTrain: String {
     case BEV = "BEV"
     case REX = "REX"
 }
 
-enum BMWiModel: String {
+public enum BMWiModel: String {
     case I3 = "I3"
     case I8 = "I8"
     
@@ -28,7 +28,7 @@ enum BMWiModel: String {
     }
 }
 
-enum BMWiColor: String {
+public enum BMWiColor: String {
     
     // i3 2014 colors
     case B72 = "B72"
@@ -81,28 +81,28 @@ enum BMWiColor: String {
     }
 }
 
-struct Vehicle {
+public struct Vehicle {
     
-    let model: BMWiModel
-    let bodyType: String
-    let year: Int
-    let VIN: String
-    let hub: BMWHub
-    let color: BMWiColor
-    let driveTrain: DriveTrain
-    let countryCode: String
+    public let model: BMWiModel
+    public let bodyType: String
+    public let year: Int
+    public let VIN: String
+    public let hub: BMWHub
+    public let color: BMWiColor
+    public let driveTrain: DriveTrain
+    public let countryCode: String
 
 //    let canBlowHorn: Bool
 //    let canFlashLight: Bool
 //    let canReceivePOI: Bool
 //    let vehicleFinderActivated: Bool
     
-    var lastVehicleStatus: VehicleStatus?
+    public var lastVehicleStatus: VehicleStatus?
 }
 
 extension Vehicle: Decodable {
     
-    static func decode(json: AnyObject) throws -> Vehicle {
+    public static func decode(json: AnyObject) throws -> Vehicle {
         
         return try Vehicle(
             model: BMWiModel(rawValue: json => "model")!,

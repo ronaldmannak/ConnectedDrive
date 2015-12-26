@@ -232,18 +232,23 @@ extension AppDelegate {
         
         let menu = NSMenu()
         
+        // Last Event
+        let timeFormat = NSDateFormatter()
+        timeFormat.dateFormat = "h:mm a"
+        menu.addItemWithTitle(status.updateReason.description + NSLocalizedString(" at ", comment: "") + timeFormat.stringFromDate(status.updateTime), action: nil, keyEquivalent: "")        
+        menu.addItem(NSMenuItem.separatorItem())
+        
         // If charging, add estimated time until full
         if status.chargingTimeRemaining != nil {
             menu.addItemWithTitle("Time until full: \(status.chargingTimeRemainingString)", action: nil, keyEquivalent: "")
         }
+        
+        // Range
         menu.addItemWithTitle("Range: \(status.remainingRangeMi) miles", action: nil, keyEquivalent: "")
-        let secureStatus: String = status.carIsSecured ? NSLocalizedString("Doors and windows are closed", comment: "") : NSLocalizedString("Car is open", comment: "")
-        menu.addItemWithTitle(secureStatus, action: nil, keyEquivalent: "")
-
-        // Last Event
-        let timeFormat = NSDateFormatter()
-        timeFormat.dateFormat = "h:mm a"
-        menu.addItemWithTitle("Event: \(status.updateReason.description) \(timeFormat.stringFromDate(status.updateTime))", action: nil, keyEquivalent: "")
+        
+        // Doors and windows
+        menu.addItemWithTitle(NSLocalizedString("Doors:", comment: "") + " " + status.doorLockState.description, action: nil, keyEquivalent: "")
+        menu.addItemWithTitle(NSLocalizedString("Windows:", comment: "") + " " + status.windowState.description, action: nil, keyEquivalent: "")
         
         // Update Now
         menu.addItemWithTitle(NSLocalizedString("Update now", comment: "") + " (last update \(timeFormat.stringFromDate(status.fetchTime)))", action: Selector("fetchStatusFromServer"), keyEquivalent: "u")
@@ -444,7 +449,7 @@ extension AppDelegate {
     }
     
     func logout(sender: AnyObject?) {
-        connectedDrive.logout()
+        connectedDrive.logout(true)
     }
     
     func showPopup(sender: AnyObject?) {

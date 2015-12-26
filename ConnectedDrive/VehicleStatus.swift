@@ -11,41 +11,41 @@ import Alamofire
 import CoreLocation
 import Decodable
 
-struct VehicleStatus {
+public struct VehicleStatus {
     
-    let fetchTime: NSDate                   // Time of last fetch
-    let updateTime: NSDate                  // Time of last update reason (not the time the information was fetched)
-    let chargingLevelHv: Int
-    let chargingStatus: ChargingStatus
-    let connectionStatus: ConnectionStatus
-    let updateReason: ConnectionStatus
-    let chargingTimeRemaining: Int?
-    let lastChargingEndReason: String       // Always UNKNOWN?
-    let lastChargingEndResult: String       // Always UNKNOWN?
-    let maxRangeKM: Int
-    let maxRangeMi: Int
-    let remainingRangeKM: Int
-    let remainingRangeMi: Int
-    let remainingFuel: Int
-    let mileage: Int
-    let location: CLLocation?
+    public let fetchTime: NSDate                   // Time of last fetch
+    public let updateTime: NSDate                  // Time of last update reason (not the time the information was fetched)
+    public let chargingLevelHv: Int
+    public let chargingStatus: ChargingStatus
+    public let connectionStatus: ConnectionStatus
+    public let updateReason: ConnectionStatus
+    public let chargingTimeRemaining: Int?
+    public let lastChargingEndReason: String       // Always UNKNOWN?
+    public let lastChargingEndResult: String       // Always UNKNOWN?
+    public let maxRangeKM: Int
+    public let maxRangeMi: Int
+    public let remainingRangeKM: Int
+    public let remainingRangeMi: Int
+    public let remainingFuel: Int
+    public let mileage: Int
+    public let location: CLLocation?
     
     // Doors and Windows
-    let doorLockState: DoorStatus
-    let convertibleRoof: DoorStatus
-    let doorDriverFront: DoorStatus
-    let doorDriverRear: DoorStatus
-    let doorPassengerFront: DoorStatus
-    let doorPassengerRear: DoorStatus
-    let hood: DoorStatus
-    let parkingLight: LightStatus
-    let positionLight: LightStatus
-    let windowDriverFront: DoorStatus
-    let windowDriverRear: DoorStatus
-    let windowPassengerFront: DoorStatus
-    let windowPassengerRear: DoorStatus
+    public let doorLockState: DoorStatus
+    public let convertibleRoof: DoorStatus
+    public let doorDriverFront: DoorStatus
+    public let doorDriverRear: DoorStatus
+    public let doorPassengerFront: DoorStatus
+    public let doorPassengerRear: DoorStatus
+    public let hood: DoorStatus
+    public let parkingLight: LightStatus
+    public let positionLight: LightStatus
+    public let windowDriverFront: DoorStatus
+    public let windowDriverRear: DoorStatus
+    public let windowPassengerFront: DoorStatus
+    public let windowPassengerRear: DoorStatus
     
-    var chargingTimeRemainingString: String {
+    public var chargingTimeRemainingString: String {
         get {
             guard let chargingTimeRemaining = chargingTimeRemaining else { return "" }
             
@@ -55,7 +55,15 @@ struct VehicleStatus {
         }
     }
     
-    var carIsSecured: Bool {
+    public var windowState: DoorStatus {
+        if windowDriverFront == .Open || windowPassengerFront == .Open || windowDriverRear == .Open || windowPassengerRear == .Open {
+            return .Open
+        } else {
+            return .Closed
+        }
+    }
+    
+    public var carIsSecured: Bool {
         
         return doorLockState        == .Secured &&
             windowDriverFront       == .Closed &&
@@ -73,7 +81,7 @@ struct VehicleStatus {
 
 extension VehicleStatus: Decodable {
     
-    static func decode(json: AnyObject) throws -> VehicleStatus {
+    public static func decode(json: AnyObject) throws -> VehicleStatus {
         
         let status = try json => "vehicleStatus"
 
