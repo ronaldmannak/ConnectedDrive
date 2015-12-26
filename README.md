@@ -12,3 +12,14 @@ Includes an OSX example menu bar app.
 ![OSX menu screenshot](Documentation/OSX-Screenshot.png)
 
 ![OSX notification screenshot](/Documentation/OSX-Notification.png)
+
+# Installation
+
+To integrate ConnectedDrive into your Xcode project using CocoaPods, add the following lines to your `Podfile`:
+
+```ruby
+use_frameworks!
+
+pod 'ConnectedDrive', '~> 0.1'
+```
+
