@@ -51,7 +51,7 @@ public struct VehicleStatus {
             
             let hours = chargingTimeRemaining / 60
             let minutes = chargingTimeRemaining % 60
-            return "\(hours):" + String(format: "%02d", minutes) + " " + (hours > 0 ? NSLocalizedString("hours", comment: "") : NSLocalizedString("minutes", comment: ""))
+            return "\(hours):" + String(format: "%02d", minutes) + " " + (hours > 0 ? NSLocalizedString("hours", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "") : NSLocalizedString("minutes", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: ""))
         }
     }
     

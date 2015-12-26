@@ -50,25 +50,39 @@ public enum BMWiColor: String {
     public var description: String {
         switch self {
         case B72:
-            return NSLocalizedString("Ionic Silver metallic", comment: "")
+            return NSLocalizedString("Ionic Silver metallic", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
         case B74:
-            return NSLocalizedString("Arravani Grey", comment: "")
+            return NSLocalizedString("Arravani Grey", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
         case B78:
-            return NSLocalizedString("Solar Orange", comment: "")
+            return NSLocalizedString("Solar Orange", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
         case B81:
-            return NSLocalizedString("Andesit Silver metallic", comment: "")
+            return NSLocalizedString("Andesit Silver metallic", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
         case B85:
-            return NSLocalizedString("Capparis White", comment: "")
+            let isStarWarsDay: Bool = {
+                // Star Wars day is May 4th
+                let calendar    = NSCalendar.currentCalendar()
+                let starWarsDay: NSDate = {
+                    let components      = NSDateComponents()
+                    components.day      = 4
+                    components.month    = 5
+                    return calendar.dateFromComponents(components)!
+                }()
+                return calendar.isDate(NSDate(), inSameDayAsDate: starWarsDay)
+            }()
+            if isStarWarsDay {
+                return NSLocalizedString("Stormtrooper", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+            }
+            return NSLocalizedString("Capparis White", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
         case C2U:
-            return NSLocalizedString("Platinum Silver", comment: "")
+            return NSLocalizedString("Platinum Silver", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
         case C2V:
-            return NSLocalizedString("Mineral Grey", comment: "")
+            return NSLocalizedString("Mineral Grey", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
         case C2W:
-            return NSLocalizedString("Fluid Black", comment: "")
+            return NSLocalizedString("Fluid Black", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
         case C01:
-            return NSLocalizedString("Protonic Blue", comment: "")
+            return NSLocalizedString("Protonic Blue", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
         case .UnknownKey:
-            return NSLocalizedString("Unknown color", comment: "")
+            return NSLocalizedString("Unknown color", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
         }
     }
     

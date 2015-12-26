@@ -9,6 +9,7 @@ Pod::Spec.new do |s|
 
   s.source = { :git => 'https://github.com/ronaldmannak/ConnectedDrive.git', :tag => s.version }
   s.source_files = 'ConnectedDrive/*.swift'
+  s.resource = 'ConnectedDrive/*.lproj'
   
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'

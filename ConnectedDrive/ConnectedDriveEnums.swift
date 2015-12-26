@@ -42,7 +42,7 @@ public enum ChargingStatus: String {
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
     public var description: String {
-        return NSLocalizedString(self.rawValue, comment: "")
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
     }
     
     init(string: String?) {
@@ -78,7 +78,7 @@ public enum ConnectionStatus: String {
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
     public var description: String {
-        return NSLocalizedString(self.rawValue, comment: "")
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
     }
     
     init(string: String?) {
@@ -98,7 +98,7 @@ public enum DoorStatus: String {
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
     public var description: String {
-        return NSLocalizedString(self.rawValue, comment: "")
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
     }
     
     init(string: String?) {
@@ -117,7 +117,7 @@ public enum LightStatus: String {
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
     public var description: String {
-        return NSLocalizedString(self.rawValue, comment: "")
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
     }
     
     init(string: String?) {
