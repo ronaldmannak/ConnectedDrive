@@ -193,6 +193,10 @@ public enum VehicleService: String {
     public var description: String {
         return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
     }
+    
+    init(string: String) {
+        self = VehicleService(rawValue: string)!
+    }
 }
 
 /**
@@ -216,5 +220,9 @@ public enum RequestStatus: String {
     // Human readable description, stored in Localizable.string
     public var description: String {
         return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+    }
+    
+    init(string: String) {
+        self = RequestStatus(rawValue: string)!
     }
 }

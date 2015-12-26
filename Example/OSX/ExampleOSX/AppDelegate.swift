@@ -11,8 +11,8 @@ import MapKit
 import ConnectedDrive
 
 enum FetchInterval: NSTimeInterval {
-    case Regular =  600 // 10 minutes
-    case Often =    60  // 1 minute
+    case Regular    = 600 // 10 minutes
+    case Often      = 60  // 1 minute
 }
 
 @NSApplicationMain
@@ -306,6 +306,12 @@ extension AppDelegate {
             menu.addItemWithTitle(NSLocalizedString("Range map is loading...", comment: ""), action: nil, keyEquivalent: "")
         }
         
+        // Command submenu
+        let commandItem = NSMenuItem(title: NSLocalizedString("Send command", comment: ""), action: nil, keyEquivalent: "")
+        let commandSubmenu = createCommandMenu()
+        commandItem.submenu = commandSubmenu
+        menu.addItem(commandItem)
+        
         // Quit
         if menu.itemArray.last != NSMenuItem.separatorItem() {
             menu.addItem(NSMenuItem.separatorItem())
@@ -351,8 +357,58 @@ extension AppDelegate {
             item.tag = i
             menu.addItem(item)
         }
+        return menu
+    }
+    
+    func createCommandMenu() -> NSMenu {
+        
+        let menu = NSMenu()
+        
+        // Horn
+        let hornItem = NSMenuItem(title: NSLocalizedString("Horn", comment: ""), action: Selector("hornBlow:"), keyEquivalent: "h")
+        menu.addItem(hornItem)
+        
+        // Flash Headlights
+        let flashHeadlights = NSMenuItem(title: NSLocalizedString("Flash headlights", comment: ""), action: Selector("flashHeadlights:"), keyEquivalent: "f")
+        menu.addItem(flashHeadlights)
+        
+        // Lock doors
+        let lockDoorsItem = NSMenuItem(title: NSLocalizedString("Lock doors", comment: ""), action: Selector("lockDoors:"), keyEquivalent: "l")
+        menu.addItem(lockDoorsItem)
         
         return menu
+    }
+}
+
+/*
+ *  Commands
+ */
+
+extension AppDelegate {
+    
+    func hornBlow(sender: AnyObject) {
+        sendCommand(.HornBlow)
+    }
+    
+    func flashHeadlights(sender: AnyObject) {
+        sendCommand(.LightFlash)
+    }
+    
+    func lockDoors(sender: AnyObject) {
+        sendCommand(.DoorLock)
+    }
+    
+    func sendCommand(service: VehicleService) {
+        guard let vehicle = vehicle else { return }
+        connectedDrive.executeCommand(vehicle, service: service) { result in
+            
+            switch result {
+            case .Failure(let error):
+                print (error)
+            case .Success(let status):
+                print(status)
+            }
+        }
     }
 }
 

@@ -167,7 +167,7 @@ extension ConnectedDrive {
      Tries to log in user based on username and password stored in the keychain.
      
      - parameter hub:        Optionally specify hub to log in
-     - parameter completion: Passes .NoUsernamePasswordStored NSError in case no username and password were stored and will call delegate?.shouldPresentLoginWindow(). Will pass Credentials if auto login was successful.
+     - parameter completion: Passes `.NoUsernamePasswordStored` NSError in case no username and password were stored and will call `delegate?.shouldPresentLoginWindow()`. Will pass Credentials if auto login was successful.
      */
     public func autoLogin(hub: BMWHub? = nil, completion:(Result<Credentials, NSError>) -> Void) {
         
@@ -198,6 +198,15 @@ extension ConnectedDrive {
         
         delegate?.didLogout()
     }
+    
+    /**
+     For debug purposes only. Deletes username and password from keychain and last used hub from user defaults.
+     */
+    public func deleteStoredItems() {
+        Keychain.delete("username")
+        Keychain.delete("password")
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "LastUsedHub")
+    }
 }
 
 /*
@@ -212,7 +221,7 @@ extension ConnectedDrive {
     /**
      Fetches list of vehicles from server. All geographically different BMW servers return the same vehicle list.
      
-     - parameter completion: Invoked when server returns data. Result is either Result.Success([Vehicle]) or Result.Failure(NSError)
+     - parameter completion: Invoked when server returns data. Result is either `Result.Success([Vehicle])` or `Result.Failure(NSError)`
      */
     public func vehicles(completion: (Result<[Vehicle], NSError>) -> Void) {
         
@@ -243,7 +252,7 @@ extension ConnectedDrive {
      Fetches vehicle status from server. If the vehicle is stored on a different server than currently logged in to, this method will automatically login to the correct server. In that case, the router will stay logged in to the old server until login is completed.
      
      - parameter vehicle:    Vehicle
-     - parameter completion: Invoked when server returns data. Result is either Result.Success(VehicleStatus) or Result.Failure(NSError)
+     - parameter completion: Invoked when server returns data. Result is either `Result.Success(VehicleStatus)` or `Result.Failure(NSError)`
      */
     public func vehicleStatus(vehicle: Vehicle, completion: (Result<VehicleStatus, NSError>) -> Void) {
         
@@ -268,8 +277,8 @@ extension ConnectedDrive {
      Fetches polygons that visualise the current range in Comfort and Eco Pro Plus mode.
      
      - parameter vehicle:    Vehicle
-     - parameter completion: Invoked when server returns data. Result is Result.Success(RangeMap) in case of success
-        or Result.Failure(NSError) in case of fail.
+     - parameter completion: Invoked when server returns data. Result is `Result.Success(RangeMap)` in case of success
+        or `Result.Failure(NSError)` in case of fail.
      */
     public func rangeMap(vehicle: Vehicle, completion: (Result<RangeMap, NSError>) -> Void) {
         
@@ -312,14 +321,40 @@ extension ConnectedDrive {
         }
         completion(credentials: self.credentials)
     }
+}
+
+/*
+ *  Execute commands
+ */
+extension ConnectedDrive {
     
+    public func executeCommand(vehicle: Vehicle, service: VehicleService, completion: (Result<ExecutionStatus, NSError>) -> Void) {
+        let command: ConfineServer = { credentials in
+            
+            guard let credentials = credentials else {
+                completion(Result.Failure(ConnectedDrive.notLoggedInError))
+                return
+            }
+            
+            Alamofire.request(Router.ExecuteService(VIN: vehicle.VIN, service: service, login: credentials)).responseObject { (response: Response<ExecutionStatus, NSError>) in
+                completion(response.result)
+            }
+        }
+        confineServer(vehicle.hub, completion: command)
+    }
     
-    /**
-     For debug purposes only. Deletes username and password from keychain and last used hub from user defaults.
-     */
-    public func deleteStoredItems() {
-        Keychain.delete("username")
-        Keychain.delete("password")
-        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "LastUsedHub")
+    public func CommandStatus(vehicle: Vehicle, service: VehicleService, completion: (Result<ExecutionStatus, NSError>) -> Void) {
+        let status: ConfineServer = { credentials in
+            
+            guard let credentials = credentials else {
+                completion(Result.Failure(ConnectedDrive.notLoggedInError))
+                return
+            }
+            
+            Alamofire.request(Router.ServiceStatus(VIN: vehicle.VIN, service: service, login: credentials)).responseObject { (response: Response<ExecutionStatus, NSError>) in
+                completion(response.result)
+            }
+        }
+        confineServer(vehicle.hub, completion: status)
     }
 }

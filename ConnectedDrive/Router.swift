@@ -27,7 +27,7 @@ public enum Router: URLRequestConvertible {
     case ChargingTimes(VIN: String, login: Credentials)
     case VehicleDestinations(VIN: String, login: Credentials)
     case RangeMap(VIN: String, login: Credentials)
-    case RequestStatus(VIN: String, service: VehicleService, login: Credentials)
+    case ServiceStatus(VIN: String, service: VehicleService, login: Credentials)
     case ExecuteService(VIN: String, service: VehicleService, login: Credentials)
     case ChargingStations(login: Credentials)
 
@@ -58,7 +58,7 @@ public enum Router: URLRequestConvertible {
             return credentials.tokens.accessToken
         case .RangeMap(_, let credentials):
             return credentials.tokens.accessToken
-        case .RequestStatus(_, _, let credentials):
+        case .ServiceStatus(_, _, let credentials):
             return credentials.tokens.accessToken
         case .ExecuteService(_, _, let credentials):
             return credentials.tokens.accessToken
@@ -85,7 +85,7 @@ public enum Router: URLRequestConvertible {
             return credentials.hub.baseURLString
         case .RangeMap(_, let credentials):
             return credentials.hub.baseURLString
-        case .RequestStatus(_, _, let credentials):
+        case .ServiceStatus(_, _, let credentials):
             return credentials.hub.baseURLString
         case .ExecuteService(_, _, let credentials):
             return credentials.hub.baseURLString
@@ -112,7 +112,7 @@ public enum Router: URLRequestConvertible {
             return "/webapi/v1/user/vehicles/\(VIN)/destinations"
         case .RangeMap(let VIN, _):
             return "/webapi/v1/user/vehicles/\(VIN)/rangemap"
-        case .RequestStatus(let VIN, let service, _):
+        case .ServiceStatus(let VIN, let service, _):
             return "/webapi/v1/user/vehicles/\(VIN)/serviceExecutionStatus?serviceType=\(service.rawValue)" // TODO: parameter in dict?
         case .ExecuteService(let VIN, _, _):
             return "/webapi/v1/user/vehicles/\(VIN)/executeService"
@@ -125,6 +125,10 @@ public enum Router: URLRequestConvertible {
         switch self {
 //        case .VehicleStatus:
 //            return ["deviceTime" : "2015-12-10T16:47:03-500"] // deviceTime seems to be optional
+        case .ExecuteService(_, let service, _):
+            return ["serviceType"   : service.rawValue]
+        case .ServiceStatus(_, let service, _):
+            return ["serviceType"   : service.rawValue]
         case .Login(let username, let password, _):
             return [
                 "grant_type"        : "password",

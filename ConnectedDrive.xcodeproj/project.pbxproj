@@ -47,6 +47,9 @@
 		521F617D1C2E441B00E39C3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 521F617B1C2E441B00E39C3A /* Localizable.strings */; };
 		521F617E1C2E441B00E39C3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 521F617B1C2E441B00E39C3A /* Localizable.strings */; };
 		521F617F1C2E441B00E39C3A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 521F617B1C2E441B00E39C3A /* Localizable.strings */; };
+		52314B6F1C2F4BE70073D632 /* ExecutionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52314B6E1C2F4BE70073D632 /* ExecutionStatus.swift */; };
+		52314B701C2F4BE70073D632 /* ExecutionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52314B6E1C2F4BE70073D632 /* ExecutionStatus.swift */; };
+		52314B711C2F4BE70073D632 /* ExecutionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52314B6E1C2F4BE70073D632 /* ExecutionStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +100,7 @@
 		521F615A1C2CBB3500E39C3A /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Serializer.swift; path = ConnectedDrive/Serializer.swift; sourceTree = "<group>"; };
 		521F616E1C2CBD7000E39C3A /* ConnectedDrive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConnectedDrive.h; path = ConnectedDrive/ConnectedDrive.h; sourceTree = "<group>"; };
 		521F617C1C2E441B00E39C3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ConnectedDrive/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		52314B6E1C2F4BE70073D632 /* ExecutionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExecutionStatus.swift; path = ConnectedDrive/ExecutionStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +217,7 @@
 				521F61431C2CBB2100E39C3A /* Vehicle.swift */,
 				521F61441C2CBB2100E39C3A /* VehicleError.swift */,
 				521F61451C2CBB2100E39C3A /* VehicleStatus.swift */,
+				52314B6E1C2F4BE70073D632 /* ExecutionStatus.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -461,6 +466,7 @@
 				521F615E1C2CBB3500E39C3A /* ConnectedDriveEnums.swift in Sources */,
 				521F61671C2CBB3500E39C3A /* Router.swift in Sources */,
 				521F61491C2CBB2100E39C3A /* RangeMap.swift in Sources */,
+				52314B6F1C2F4BE70073D632 /* ExecutionStatus.swift in Sources */,
 				521F61461C2CBB2100E39C3A /* Credentials.swift in Sources */,
 				521F616A1C2CBB3500E39C3A /* Serializer.swift in Sources */,
 				521F614F1C2CBB2100E39C3A /* VehicleError.swift in Sources */,
@@ -487,6 +493,7 @@
 				521F615F1C2CBB3500E39C3A /* ConnectedDriveEnums.swift in Sources */,
 				521F61681C2CBB3500E39C3A /* Router.swift in Sources */,
 				521F614A1C2CBB2100E39C3A /* RangeMap.swift in Sources */,
+				52314B701C2F4BE70073D632 /* ExecutionStatus.swift in Sources */,
 				521F61471C2CBB2100E39C3A /* Credentials.swift in Sources */,
 				521F616B1C2CBB3500E39C3A /* Serializer.swift in Sources */,
 				521F61501C2CBB2100E39C3A /* VehicleError.swift in Sources */,
@@ -512,6 +519,7 @@
 				521F61601C2CBB3500E39C3A /* ConnectedDriveEnums.swift in Sources */,
 				521F61691C2CBB3500E39C3A /* Router.swift in Sources */,
 				521F614B1C2CBB2100E39C3A /* RangeMap.swift in Sources */,
+				52314B711C2F4BE70073D632 /* ExecutionStatus.swift in Sources */,
 				521F61481C2CBB2100E39C3A /* Credentials.swift in Sources */,
 				521F616C1C2CBB3500E39C3A /* Serializer.swift in Sources */,
 				521F61511C2CBB2100E39C3A /* VehicleError.swift in Sources */,
