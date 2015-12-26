@@ -9,8 +9,14 @@
 import Foundation
 import Decodable
 
-
-/// BMW server addresses. The rawvalues correspond with "hub" value of the server vehicle list.
+/// Wraps the "hub" value of Vehicle
+///
+/// BMW has three geographically different servers: China, Europa and USA. 
+/// While a ConnectedDrive user can login to any server and retreive their vehicle list,
+/// the app needs to communicate with one specific server for vehicle status and vehicle commands.
+///
+/// The rawValues correspond with "hub" JSON value of the server vehicle list.
+/// Note: "HUB_CN" is not verified to be the code for the Chinese server.
 
 public enum BMWHub: String {
     
@@ -30,6 +36,7 @@ public enum BMWHub: String {
     }
 }
 
+/// Wrapper for the "chargingstatus" field in the vehicle status JSON. Uses Localizable.strings for localized descriptions.
 public enum ChargingStatus: String {
     
     case NotConnected           = "INVALID"
@@ -41,6 +48,8 @@ public enum ChargingStatus: String {
     case Error                  = "ERROR"
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
+    
+    // Human readable description, stored in Localizable.string
     public var description: String {
         return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
     }
@@ -54,6 +63,7 @@ public enum ChargingStatus: String {
     }
 }
 
+/// Wrapper for both "connectionStatus" and "updateReason" vehicle status fields.
 public enum ConnectionStatus: String {
     case Connected              = "CONNECTED"
     case ChargingDone           = "CHARGING_DONE"
@@ -76,7 +86,8 @@ public enum ConnectionStatus: String {
     case VehicleUnsecured       = "VEHICLE_UNSECURED"
     case Disconnected           = "DISCONNECTED"
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
-    
+
+    // Human readable description, stored in Localizable.string
     public var description: String {
         return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
     }
@@ -90,6 +101,7 @@ public enum ConnectionStatus: String {
     }
 }
 
+/// Wrapper for door and window fields. Window can only be Open or Closed
 public enum DoorStatus: String {
     case Open                   = "OPEN"
     case Closed                 = "CLOSED"
@@ -97,6 +109,7 @@ public enum DoorStatus: String {
     case Invalid                = "INVALID"
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
+    // Human readable description, stored in Localizable.string
     public var description: String {
         return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
     }
@@ -110,12 +123,15 @@ public enum DoorStatus: String {
     }
 }
 
+
+/// Wrapper for positionLight and parkingLight
 public enum LightStatus: String {
     case On                     = "ON"
     case Off                    = "OFF"
     case Invalid                = "Invalid"
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
+    // Human readable description, stored in Localizable.string
     public var description: String {
         return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
     }
@@ -129,6 +145,29 @@ public enum LightStatus: String {
     }
 }
 
+/**
+ Wrapper for car commands
+ 
+ - ChargeNow:              <#ChargeNow description#>
+ - ChargingControl:        <#ChargingControl description#>
+ - ClimateControl:         <#ClimateControl description#>
+ - ClimateControlStart:    <#ClimateControlStart description#>
+ - DoorLock:               <#DoorLock description#>
+ - DoorUnlock:             <#DoorUnlock description#>
+ - AllImages:              <#AllImages description#>
+ - PasswordReset:          <#PasswordReset description#>
+ - Vehicles:               <#Vehicles description#>
+ - VehicleImage:           <#VehicleImage description#>
+ - VehicleStatus:          <#VehicleStatus description#>
+ - HornBlow:               <#HornBlow description#>
+ - LightFlash:             <#LightFlash description#>
+ - LocalSearch:            <#LocalSearch description#>
+ - LocalSearchSuggestions: <#LocalSearchSuggestions description#>
+ - Login:                  <#Login description#>
+ - Logout:                 <#Logout description#>
+ - SendPOIToCar:           <#SendPOIToCar description#>
+ - VehicleFinder:          <#VehicleFinder description#>
+ */
 public enum VehicleService: String {
     case ChargeNow              = "CHARGE_NOW"
     case ChargingControl        = "CHARGING_CONTROL"
@@ -149,13 +188,33 @@ public enum VehicleService: String {
     case Logout                 = "LOGOUT"
     case SendPOIToCar           = "SEND_POI_TO_CAR"
     case VehicleFinder          = "VEHICLE_FINDER"
+    
+    // Human readable description, stored in Localizable.string
+    public var description: String {
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+    }
 }
 
-//enum RequestStatus {
-//    DELIVERED
-//    EXECUTED
-//    INITIATED
-//    NOT_EXECUTED
-//    PENDING
-//    TIMED_OUT
-//}
+/**
+ Wrapper of sent command status
+ 
+ - Delivered:   <#Delivered description#>
+ - Executed:    <#Executed description#>
+ - Initiated:   <#Initiated description#>
+ - NotExecuted: <#NotExecuted description#>
+ - Pending:     <#Pending description#>
+ - TimedOut:    <#TimedOut description#>
+ */
+public enum RequestStatus: String {
+    case Delivered              = "DELIVERED"
+    case Executed               = "EXECUTED"
+    case Initiated              = "INITIATED"
+    case NotExecuted            = "NOT_EXECUTED"
+    case Pending                = "PENDING"
+    case TimedOut               = "TIMED_OUT"
+    
+    // Human readable description, stored in Localizable.string
+    public var description: String {
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+    }
+}

@@ -13,7 +13,14 @@ import Decodable
 
 extension Alamofire.Request {
     
-    // Arrays
+    /**
+    Serializes arrays stored in `key`
+    
+    - parameter key:               key under which the array is stored e.g. `"vehicles"`
+    - parameter completionHandler: `Result.Success([T])` or `Result.Failure(NSError)`
+    
+    - returns: Self
+    */
     public func responseCollection<T: Decodable>(key: String, completionHandler: Response<[T], NSError> -> Void) -> Self {
         let responseSerializer = ResponseSerializer<[T], NSError> { request, response, data, error in
             
@@ -44,6 +51,13 @@ extension Alamofire.Request {
     }
     
     // Single object
+    /**
+    Serializes a single object
+    
+    - parameter completionHandler: `Result.Success(T)` or `Result.Failure(NSError)`
+    
+    - returns: Self
+    */
     public func responseObject<T: Decodable>(completionHandler: Response<T, NSError> -> Void) -> Self {
 
         let responseSerializer = ResponseSerializer<T, NSError> { request, response, data, error in

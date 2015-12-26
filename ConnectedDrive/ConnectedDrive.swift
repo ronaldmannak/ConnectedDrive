@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-// Replace protocol with NSErrors?
+/// Protocol to inform delegate about login/logout events and fetching data events
 public protocol ConnectedDriveDelegate: class {
     
     /**
@@ -38,8 +38,16 @@ public protocol ConnectedDriveDelegate: class {
     func didLogout()
 }
 
+/// Main class to access ConnectedDrive servers through
 public class ConnectedDrive {
     
+    /**
+     ConnectedDrive states
+     
+     - LoggedOut: User is logged out
+     - LoggingIn: User is logging in
+     - LoggedIn:  User is successfully logged in
+     */
     public enum State {
         case LoggedOut
         case LoggingIn
@@ -48,11 +56,13 @@ public class ConnectedDrive {
     
     public init() {}
     
+    /// ConnectedDriveDelegate
     public weak var delegate: ConnectedDriveDelegate?
     
+    /// credentials includes tokens and currently used BMWHub
     private var credentials: Credentials?
 
-    /// Stores and fetches username from the keychain
+    /// Stores and fetches username in and from the keychain
     private var username: String? {
         get {
             return Keychain.load("Username")?.stringValue
@@ -70,7 +80,7 @@ public class ConnectedDrive {
         }
     }
     
-    /// Stores and fetches password from the keychain
+    /// Stores and fetches password in and from the keychain
     private var password: String? {
         get {
             return Keychain.load("Password")?.stringValue
@@ -87,9 +97,8 @@ public class ConnectedDrive {
             Keychain.save(key, data: newValue.dataValue)
         }
     }
-    
-    // Do we need this? Would be cleaner if we got rid of this
-    /// Fetches and saves last used hub for use in autologin
+
+    /// last used BMWHub stored in and fetched from the standard user defaults
     private var lastUsedHub: BMWHub? {
         get {
             guard let hub = NSUserDefaults.standardUserDefaults().stringForKey("LastUsedHub") else { return nil }
@@ -117,6 +126,13 @@ public class ConnectedDrive {
 
 extension ConnectedDrive {
     
+    /**
+     Logs into the last used hub as stored in user defaults or the default hub (Europe) if no last used hub is stored
+     
+     - parameter username:   ConnectedDrive username
+     - parameter password:   ConnectedDrive password
+     - parameter completion: Passes Result.Failure(NSError) or Result.Success(Credentials)
+     */
     public func login(username: String, password: String, completion:(Result<Credentials, NSError>) -> Void) {
         
         // Log out so no server calls can be made while logging in is in progress
@@ -147,6 +163,12 @@ extension ConnectedDrive {
         }
     }
     
+    /**
+     Tries to log in user based on username and password stored in the keychain.
+     
+     - parameter hub:        Optionally specify hub to log in
+     - parameter completion: Passes .NoUsernamePasswordStored NSError in case no username and password were stored and will call delegate?.shouldPresentLoginWindow(). Will pass Credentials if auto login was successful.
+     */
     public func autoLogin(hub: BMWHub? = nil, completion:(Result<Credentials, NSError>) -> Void) {
         
         guard let password = password, username = username, hub = hub ?? lastUsedHub else {
@@ -159,6 +181,12 @@ extension ConnectedDrive {
         login(username, password: password, completion: completion)
     }
     
+    /**
+     Logs user out.
+     
+     - parameter deleteStoredPassword: if true, username and password are permanently deleted from the keychain. 
+     Usually this should be set to true only if a user explicitly selects 'logout' from the app.
+     */
     public func logout(deleteStoredPassword: Bool = false) {
         
         if deleteStoredPassword {
@@ -178,14 +206,14 @@ extension ConnectedDrive {
 
 extension ConnectedDrive {
     
-    public typealias ConfineServer = (credentials: Credentials?) -> Void
+    /// Typealias for (Credentials?) -> Void closure for use with confineServer(hub:completion:)
+    private typealias ConfineServer = (credentials: Credentials?) -> Void
     
     /**
      Fetches list of vehicles from server. All geographically different BMW servers return the same vehicle list.
      
      - parameter completion: Invoked when server returns data. Result is either Result.Success([Vehicle]) or Result.Failure(NSError)
      */
-    
     public func vehicles(completion: (Result<[Vehicle], NSError>) -> Void) {
         
         guard let credentials = credentials else {
@@ -236,6 +264,13 @@ extension ConnectedDrive {
     }
     
     
+    /**
+     Fetches polygons that visualise the current range in Comfort and Eco Pro Plus mode.
+     
+     - parameter vehicle:    Vehicle
+     - parameter completion: Invoked when server returns data. Result is Result.Success(RangeMap) in case of success
+        or Result.Failure(NSError) in case of fail.
+     */
     public func rangeMap(vehicle: Vehicle, completion: (Result<RangeMap, NSError>) -> Void) {
         
         let rangeMap: ConfineServer = { credentials in
@@ -280,7 +315,7 @@ extension ConnectedDrive {
     
     
     /**
-     For debug purposes
+     For debug purposes only. Deletes username and password from keychain and last used hub from user defaults.
      */
     public func deleteStoredItems() {
         Keychain.delete("username")

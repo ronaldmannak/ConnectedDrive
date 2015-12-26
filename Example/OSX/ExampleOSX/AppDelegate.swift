@@ -8,6 +8,7 @@
 
 import Cocoa
 import MapKit
+import ConnectedDrive
 
 enum FetchInterval: NSTimeInterval {
     case Regular =  600 // 10 minutes

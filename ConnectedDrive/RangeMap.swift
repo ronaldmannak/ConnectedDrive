@@ -10,6 +10,9 @@ import Foundation
 import CoreLocation
 import Decodable
 
+/**
+ *  Range map polygons for Comfort and Eco Pro Plus modes that can be projected on a map
+ */
 public struct RangeMap {
     
     public let center: CLLocationCoordinate2D
@@ -25,9 +28,18 @@ extension RangeMap: Decodable {
     }
 }
 
-
+/**
+ *  Stores polygon and car mode
+ */
 public struct RangeMapPolyLine {
     
+    /**
+     Types of car modes
+     
+     - Comfort:    Range polygon for comfort
+     - EcoPro:     Range polygon for Eco Pro
+     - EcoProPlus: Range polygon for Eco Pro Plus
+     */
     public enum RangeMapPolyLineType: String {
         case Comfort =      "COMFORT"
         case EcoPro =       "ECO_PRO"

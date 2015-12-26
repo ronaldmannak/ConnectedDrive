@@ -9,17 +9,21 @@
 import Foundation
 import Decodable
 
+/**
+ *  Wrapper for tokens and hub
+ */
 public struct Credentials {
     let hub: BMWHub
     let tokens: Tokens
 }
 
+/**
+ *  accessToken and refreshToken
+ */
 struct Tokens {
-
     let accessToken: String
     let refreshToken: String
 }
-
 
 extension Tokens: Decodable {
  

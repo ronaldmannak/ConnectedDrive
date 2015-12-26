@@ -9,6 +9,12 @@
 import Foundation
 import Decodable
 
+/**
+ <#Description#>
+ 
+ - BEV: Battery Electric Vehicle
+ - REX: Range Extender
+ */
 public enum DriveTrain: String {
     case BEV = "BEV"
     case REX = "REX"
@@ -28,6 +34,7 @@ public enum BMWiModel: String {
     }
 }
 
+/// BMW Color codes
 public enum BMWiColor: String {
     
     // i3 2014 colors
@@ -47,6 +54,7 @@ public enum BMWiColor: String {
     
     case UnknownKey = "UNKNOWN"
     
+    /// Returns localized description from Localizable.string
     public var description: String {
         switch self {
         case B72:
@@ -95,6 +103,9 @@ public enum BMWiColor: String {
     }
 }
 
+/**
+ *  Vehicle info
+ */
 public struct Vehicle {
     
     public let model: BMWiModel
@@ -106,10 +117,10 @@ public struct Vehicle {
     public let driveTrain: DriveTrain
     public let countryCode: String
 
-//    let canBlowHorn: Bool
-//    let canFlashLight: Bool
-//    let canReceivePOI: Bool
-//    let vehicleFinderActivated: Bool
+//    public let canBlowHorn: Bool
+//    public let canFlashLight: Bool
+//    public let canReceivePOI: Bool
+//    public let vehicleFinderActivated: Bool
     
     public var lastVehicleStatus: VehicleStatus?
 }
@@ -127,10 +138,10 @@ extension Vehicle: Decodable {
             color: BMWiColor(string: try? json => "colorCode"),
             driveTrain: DriveTrain(rawValue: json => "driveTrain")!,
             countryCode: json => "countryCode",
-////            canBlowHorn: <#T##Bool#>,
-////            canFlashLight: <#T##Bool#>,
-////            canReceivePOI: <#T##Bool#>,
-////            vehicleFinderActivated: <#T##Bool#>,
+//            canBlowHorn: <#T##Bool#>,
+//            canFlashLight: <#T##Bool#>,
+//            canReceivePOI: <#T##Bool#>,
+//            vehicleFinderActivated: <#T##Bool#>,
             lastVehicleStatus: nil
         )
     }

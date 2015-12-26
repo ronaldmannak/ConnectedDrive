@@ -11,6 +11,9 @@ import Alamofire
 import CoreLocation
 import Decodable
 
+/**
+ *  Detailed vehicle status
+ */
 public struct VehicleStatus {
     
     public let fetchTime: NSDate                   // Time of last fetch

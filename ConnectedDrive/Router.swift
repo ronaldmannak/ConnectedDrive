@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 
+/// Alamofire router enum. Because requests can be made to any of the three hubs (servers), Router does not store server addresses or tokens. Those need to be passed to Router with each call.
 public enum Router: URLRequestConvertible {
     
     static var APIKey: String {
