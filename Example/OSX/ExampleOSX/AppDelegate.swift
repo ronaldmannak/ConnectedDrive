@@ -282,6 +282,8 @@ extension AppDelegate {
             rangeMapItem.view = createMapView(rangeMap: rangeMap)
             rangeSubmenu.addItem(rangeMapItem)
             rangeItem.submenu = rangeSubmenu
+        } else {
+            menu.addItemWithTitle(NSLocalizedString("Range map is loading...", comment: ""), action: nil, keyEquivalent: "")
         }
         
         // Quit
