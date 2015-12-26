@@ -169,6 +169,20 @@ extension AppDelegate {
         vehicleStatus = nil
         rangeMap = nil
     }
+    
+    func selectVehicleMenuAction(sender: AnyObject) {
+        guard let menuItem = sender as? NSMenuItem, vehicleList = vehicleList where menuItem.tag < vehicleList.count else {
+            return
+        }
+        selectVehicle(vehicleList[menuItem.tag])
+    }
+    
+    func selectVehicle(vehicle: Vehicle) {
+        self.vehicle = vehicle
+        self.vehicleStatus = nil
+        self.rangeMap = nil
+        fetchStatusFromServer()
+    }
 }
 
 /*
@@ -192,7 +206,7 @@ extension AppDelegate {
             } else {
                 color = NSColor.blackColor()
             }
-            updateLabel("\(percentage)%", color: color)
+            updateLabel("\(percentage)" + (percentage == 100 ? "" : "%"), color: color)
             
         } else {
             
@@ -226,11 +240,16 @@ extension AppDelegate {
 
     func createLoggedInMenu() -> NSMenu {
         
-        guard let status = vehicleStatus else {
+        guard let currentVehicle = vehicle, status = vehicleStatus else {
             return createLoggingInMenu()
         }
         
         let menu = NSMenu()
+        
+        // If more than one vehicle is linked to the account, add a choose vehicle submenu
+        let vehicleItem = NSMenuItem(title: "BMW " + currentVehicle.model.description + " " + currentVehicle.color.description , action: nil, keyEquivalent: "")
+        menu.addItem(vehicleItem)
+        vehicleItem.submenu = createVehicleSelectMenu()
         
         // Last Event
         let timeFormat = NSDateFormatter()
@@ -324,9 +343,12 @@ extension AppDelegate {
         
         let menu = NSMenu()
         
-        for vehicle in vehicleList {
+        for i in 0 ..< vehicleList.count {
+            let vehicle = vehicleList[i]
             let title = vehicle.model.description + " " + vehicle.color.description
-            menu.addItemWithTitle(title, action: Selector("selectVehicle:"), keyEquivalent: "")
+            let item = NSMenuItem(title: title, action: Selector("selectVehicleMenuAction:"), keyEquivalent: "")
+            item.tag = i
+            menu.addItem(item)
         }
         
         return menu
