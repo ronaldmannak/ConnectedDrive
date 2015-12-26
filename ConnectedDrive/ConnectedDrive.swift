@@ -46,6 +46,8 @@ public class ConnectedDrive {
         case LoggedIn
     }
     
+    public init() {}
+    
     public weak var delegate: ConnectedDriveDelegate?
     
     private var credentials: Credentials?

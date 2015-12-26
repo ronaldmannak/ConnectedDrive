@@ -41,7 +41,7 @@ public enum ChargingStatus: String {
     case Error                  = "ERROR"
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
-    var description: String {
+    public var description: String {
         return NSLocalizedString(self.rawValue, comment: "")
     }
     
@@ -77,7 +77,7 @@ public enum ConnectionStatus: String {
     case Disconnected           = "DISCONNECTED"
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
-    var description: String {
+    public var description: String {
         return NSLocalizedString(self.rawValue, comment: "")
     }
     
@@ -97,7 +97,7 @@ public enum DoorStatus: String {
     case Invalid                = "INVALID"
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
-    var description: String {
+    public var description: String {
         return NSLocalizedString(self.rawValue, comment: "")
     }
     
@@ -116,7 +116,7 @@ public enum LightStatus: String {
     case Invalid                = "Invalid"
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
-    var description: String {
+    public var description: String {
         return NSLocalizedString(self.rawValue, comment: "")
     }
     

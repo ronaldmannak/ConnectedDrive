@@ -18,7 +18,7 @@ public enum BMWiModel: String {
     case I3 = "I3"
     case I8 = "I8"
     
-    var description: String {
+    public var description: String {
         switch self {
         case .I3:
             return "i3"
@@ -47,7 +47,7 @@ public enum BMWiColor: String {
     
     case UnknownKey = "UNKNOWN"
     
-    var description: String {
+    public var description: String {
         switch self {
         case B72:
             return NSLocalizedString("Ionic Silver metallic", comment: "")
