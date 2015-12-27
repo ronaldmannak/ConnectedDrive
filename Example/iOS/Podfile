@@ -1,0 +1,12 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'ConnectedDriveiOS' do
+	pod 'Alamofire', '~> 3.0'
+    pod 'Decodable', '~> 0.3.3'
+    pod 'ConnectedDrive', :path => '../../'
+end
+
+target 'ConnectedDriveiOSTests' do
+
+end
