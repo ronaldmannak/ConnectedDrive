@@ -358,3 +358,26 @@ extension ConnectedDrive {
         confineServer(vehicle.hub, completion: status)
     }
 }
+
+extension ConnectedDrive {
+    
+    public func fetchImage(vehicle: Vehicle) {
+        let fetchImage: ConfineServer = { credentials in
+            
+            guard let credentials = credentials else {
+//                completion(Result.Failure(ConnectedDrive.notLoggedInError))
+                return
+            }
+
+            Alamofire.request(Router.Image(VIN: vehicle.VIN, login: credentials)).responseJSON{ response in
+                switch response.result {
+                case .Failure(let error):
+                    print(error)
+                case .Success(let json):
+                    print(json)
+                }
+            }
+        }
+        confineServer(vehicle.hub, completion: fetchImage)
+    }
+}

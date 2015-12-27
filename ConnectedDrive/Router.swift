@@ -30,6 +30,7 @@ public enum Router: URLRequestConvertible {
     case ServiceStatus(VIN: String, service: VehicleService, login: Credentials)
     case ExecuteService(VIN: String, service: VehicleService, login: Credentials)
     case ChargingStations(login: Credentials)
+    case Image(VIN: String, login: Credentials)
 
     private var method: Alamofire.Method {
         switch self {
@@ -64,6 +65,8 @@ public enum Router: URLRequestConvertible {
             return credentials.tokens.accessToken
         case .ChargingStations(let credentials):
             return credentials.tokens.accessToken
+        case .Image(_, let credentials):
+            return credentials.tokens.accessToken
         }
     }
     
@@ -90,6 +93,8 @@ public enum Router: URLRequestConvertible {
         case .ExecuteService(_, _, let credentials):
             return credentials.hub.baseURLString
         case .ChargingStations(let credentials):
+            return credentials.hub.baseURLString
+        case .Image(_, let credentials):
             return credentials.hub.baseURLString
         }
     }
@@ -118,6 +123,8 @@ public enum Router: URLRequestConvertible {
             return "/webapi/v1/user/vehicles/\(VIN)/executeService"
         case .ChargingStations(_):
             return "webapi/v1/chargingstations/dynamicdata"
+        case .Image(let VIN, _):
+            return "/webapi/v1/user/vehicles/\(VIN)/image"
         }
     }
     
@@ -136,6 +143,19 @@ public enum Router: URLRequestConvertible {
                 "password"          : password,
                 "scope"             : "remote_services vehicle_data",
             ]
+        case .Image(_, _):
+            // TODO: This doesn't work yet.
+            return [
+                "size"                  : "Small",
+                "angle"                 : 0,
+                "imageParameter.width"  : 100
+                
+//                "imageParameter"    : [
+//                    "width"         : 200,
+//                    "height"        : 200
+//                ]
+            ]
+            
         default:
             return nil
         }
