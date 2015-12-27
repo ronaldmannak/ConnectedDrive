@@ -3,3 +3,4 @@ Example/OSX/Pods
 Example/OSX/Podfile.lock
 Example/iOS/Pods
 Example/iOS/Podfile.lock
+Example/iOS/ConnectedDriveiOS/Info.plist
