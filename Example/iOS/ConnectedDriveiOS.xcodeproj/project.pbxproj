@@ -17,6 +17,7 @@
 		52314BD01C2FB14F0073D632 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52314BCE1C2FB14F0073D632 /* Login.storyboard */; };
 		52314BD31C2FB31B0073D632 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52314BD21C2FB31A0073D632 /* LoginViewController.swift */; };
 		52314BD81C2FB7660073D632 /* Locator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52314BD71C2FB7660073D632 /* Locator.swift */; };
+		52314BDA1C2FC8F20073D632 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52314BD91C2FC8F20073D632 /* MapKit.framework */; };
 		996EFB7C1C56A7FABAA51E5D /* Pods_ConnectedDriveiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954D8E8F35F5A7963778E46D /* Pods_ConnectedDriveiOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		52314BCF1C2FB14F0073D632 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		52314BD21C2FB31A0073D632 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ConnectedDriveiOS/LoginViewController.swift; sourceTree = "<group>"; };
 		52314BD71C2FB7660073D632 /* Locator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locator.swift; sourceTree = "<group>"; };
+		52314BD91C2FC8F20073D632 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		954D8E8F35F5A7963778E46D /* Pods_ConnectedDriveiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConnectedDriveiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E165607A6021170803C064 /* Pods-ConnectedDriveiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConnectedDriveiOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConnectedDriveiOS/Pods-ConnectedDriveiOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52314BDA1C2FC8F20073D632 /* MapKit.framework in Frameworks */,
 				996EFB7C1C56A7FABAA51E5D /* Pods_ConnectedDriveiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +75,7 @@
 		23F4971F8B3BAF1EF0F1F258 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52314BD91C2FC8F20073D632 /* MapKit.framework */,
 				954D8E8F35F5A7963778E46D /* Pods_ConnectedDriveiOS.framework */,
 			);
 			name = Frameworks;
@@ -202,6 +206,14 @@
 				TargetAttributes = {
 					52314BA81C2FAEC50073D632 = {
 						CreatedOnToolsVersion = 7.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					52314BBE1C2FAEC50073D632 = {
 						CreatedOnToolsVersion = 7.2;
