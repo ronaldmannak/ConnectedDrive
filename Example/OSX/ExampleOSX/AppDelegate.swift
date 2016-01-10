@@ -153,12 +153,22 @@ extension AppDelegate {
                         self.rangeMap = rangeMap
                         
                     case .Failure(let error):
-                        print(error)
+                        let notification = NSUserNotification()
+                        notification.title = error.localizedDescription
+                        notification.informativeText = error.localizedFailureReason
+                        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+                        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
                     }
                 }
 
             case .Failure(let error):
-                print(error)
+                
+                let notification = NSUserNotification()
+                notification.title = error.localizedDescription
+                notification.informativeText = error.localizedFailureReason
+                NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+                NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                
                 self.updateLabel("x", color: NSColor.redColor())
             }
         }

@@ -319,12 +319,14 @@ extension ConnectedDrive {
             Alamofire.request(Router.VehicleStatus(VIN: vehicle.VIN, login: credentials)).validate().responseObject { (response: Response<VehicleStatus, NSError>) in
                 
                 switch response.result {
-                case .Failure(let error):
+                case .Success(_):
+                    completion(response.result)
                     
+                case .Failure(let error):                    
                     let tokenDidExpire = self.isNotAuthenticatedError(error)
                     if tokenDidExpire && retryCount < 3 {
                         
-                        let delay = dispatch_time(DISPATCH_TIME_NOW, Int64((self.state == .LoggingIn ? 3 : 0) * Double(NSEC_PER_SEC)))
+                        let delay = dispatch_time(DISPATCH_TIME_NOW, Int64((self.state == .LoggingIn ? 4 : 0) * Double(NSEC_PER_SEC)))
                         dispatch_after(delay, dispatch_get_main_queue()) {
                             self.refreshAccessToken { result in
                                 
@@ -334,12 +336,7 @@ extension ConnectedDrive {
                     } else {
                         completion(Result.Failure(error))
                     }
-                    
-                default:
-                    break
                 }
-                
-                completion(response.result)
             }
         }
         
