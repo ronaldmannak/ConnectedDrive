@@ -43,7 +43,8 @@ extension Alamofire.Request {
                     return .Failure(Error.errorWithCode(.JSONSerializationFailed,
                         failureReason: "JSON parsing error, JSON: \(value)"))
                 }
-            case .Failure(let error): return.Failure(error)
+            case .Failure(let error):
+                return.Failure(error)
             }
         }
         
@@ -59,7 +60,7 @@ extension Alamofire.Request {
     - returns: Self
     */
     public func responseObject<T: Decodable>(completionHandler: Response<T, NSError> -> Void) -> Self {
-
+        
         let responseSerializer = ResponseSerializer<T, NSError> { request, response, data, error in
             
             guard error == nil else { return .Failure(error!) }
@@ -83,5 +84,27 @@ extension Alamofire.Request {
         
         return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
+    
+//    /**
+//     Parses not authenticated errors.
+//     
+//     - parameter error: Error received from Alamofire
+//     
+//     - returns: original error or a not authorized error
+//     */
+//    private func parseNotAuthenticatedError(error: NSError) -> NSError {
+//        return isNotAuthenticatedError(error) ? VehicleError.errorWithCode(.AuthenticationFailed, failureReason: "Token was rejected by server") : error
+//    }
+//    
+//    /**
+//     Returns true if error is a "Not Authenticated" 401 error
+//     
+//     - parameter error: Error received from Alamofire
+//     
+//     - returns: true if error is a "Not Authenticated" 401 error
+//     */
+//    private func isNotAuthenticatedError(error: NSError) -> Bool {
+//        return error.domain == Error.Domain && error.code == Error.Code.StatusCodeValidationFailed.rawValue && error.localizedDescription.rangeOfString("401") != nil
+//    }
 }
 

@@ -20,6 +20,7 @@ public enum Router: URLRequestConvertible {
     }
     
     case Login(username: String, password: String, hub: BMWHub)
+    case RefreshToken(login: Credentials)
     case Vehicles(login: Credentials)
     case VehicleStatus(VIN: String, login: Credentials)
     case LastTrip(VIN: String, login: Credentials)
@@ -33,7 +34,7 @@ public enum Router: URLRequestConvertible {
 
     private var method: Alamofire.Method {
         switch self {
-        case .Login(_,_,_), .ExecuteService(_,_,_):
+        case .Login(_,_,_), .ExecuteService(_,_,_), .RefreshToken(_):
             return .POST
         default:
             return .GET
@@ -42,7 +43,7 @@ public enum Router: URLRequestConvertible {
     
     private var accessToken: String {
         switch self {
-        case Login(_, _, _):
+        case .Login(_, _, _), .RefreshToken(_):
             return ""
         case .Vehicles(let credentials):
             return credentials.tokens.accessToken
@@ -71,6 +72,8 @@ public enum Router: URLRequestConvertible {
         switch self {
         case .Login(_, _, let hub):
             return hub.baseURLString
+        case .RefreshToken(let credentials):
+            return credentials.hub.baseURLString
         case .Vehicles(let credentials):
             return credentials.hub.baseURLString
         case .VehicleStatus(_, let credentials):
@@ -96,7 +99,7 @@ public enum Router: URLRequestConvertible {
     
     private var path: String {
         switch self {
-        case .Login(_,_,_):
+        case .Login(_,_,_), .RefreshToken(_):
             return "webapi/oauth/token/"
         case .Vehicles(_):
             return "/webapi/v1/user/vehicles/"
@@ -125,10 +128,6 @@ public enum Router: URLRequestConvertible {
         switch self {
 //        case .VehicleStatus:
 //            return ["deviceTime" : "2015-12-10T16:47:03-500"] // deviceTime seems to be optional
-        case .ExecuteService(_, let service, _):
-            return ["serviceType"   : service.rawValue]
-        case .ServiceStatus(_, let service, _):
-            return ["serviceType"   : service.rawValue]
         case .Login(let username, let password, _):
             return [
                 "grant_type"        : "password",
@@ -136,6 +135,15 @@ public enum Router: URLRequestConvertible {
                 "password"          : password,
                 "scope"             : "remote_services vehicle_data",
             ]
+        case .RefreshToken(let credentials):
+            return [
+                "grant_type"        : "refresh_token",
+                "refresh_token"     : credentials.tokens.refreshToken
+            ]
+        case .ExecuteService(_, let service, _):
+            return ["serviceType"   : service.rawValue]
+        case .ServiceStatus(_, let service, _):
+            return ["serviceType"   : service.rawValue]
         default:
             return nil
         }
@@ -143,7 +151,7 @@ public enum Router: URLRequestConvertible {
     
     private var authorizationHeader: String {
         switch self {
-        case .Login(_,_,_):
+        case .Login(_,_,_), .RefreshToken(_):
             return "Basic " + Router.APIKey
         default:
             return "Bearer " + (accessToken)
