@@ -134,12 +134,7 @@ extension AppDelegate {
                     timeFormat.dateFormat = "h:mm a"
                     let timeStamp = timeFormat.stringFromDate(status.updateTime)
                 
-                    let notification = NSUserNotification()
-                    notification.title =  status.updateReason.description + " " + timeStamp
-                    notification.informativeText = NSLocalizedString("Previous: ", comment: "") + previousVehicleStatus.updateReason.description
-                    
-                    NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
-                    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                    self.showNotification(status.updateReason.description + " " + timeStamp, text: NSLocalizedString("Previous: ", comment: "") + previousVehicleStatus.updateReason.description)
                 }
                 
                 self.vehicleStatus = status
@@ -153,21 +148,14 @@ extension AppDelegate {
                         self.rangeMap = rangeMap
                         
                     case .Failure(let error):
-                        let notification = NSUserNotification()
-                        notification.title = error.localizedDescription
-                        notification.informativeText = error.localizedFailureReason
-                        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
-                        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                        
+                        self.showNotification(error.localizedDescription, text: error.localizedFailureReason)
                     }
                 }
 
             case .Failure(let error):
                 
-                let notification = NSUserNotification()
-                notification.title = error.localizedDescription
-                notification.informativeText = error.localizedFailureReason
-                NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
-                NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                self.showNotification(error.localizedDescription, text: error.localizedFailureReason)
                 
                 self.updateLabel("x", color: NSColor.redColor())
             }
@@ -580,5 +568,20 @@ extension AppDelegate: NSUserNotificationCenterDelegate {
     // Forces notification to always show
     func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
         return true
+    }
+}
+
+/*
+ *  Notifications
+ */
+
+extension AppDelegate {
+    
+    func showNotification(title: String?, text: String?) {
+        let notification = NSUserNotification()
+        notification.title = title ?? nil
+        notification.informativeText = text ?? nil
+        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
     }
 }

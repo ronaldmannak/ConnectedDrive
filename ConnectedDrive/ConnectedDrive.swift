@@ -272,7 +272,6 @@ extension ConnectedDrive {
         
         Alamofire.request(Router.Vehicles(login: credentials)).validate().responseCollection("vehicles"){ (response: Response<[Vehicle], NSError>) -> Void in
             
-            print("responseCollection called. retryCount is \(retryCount)")
             switch response.result {
             case .Success(let vehicles):
                 
