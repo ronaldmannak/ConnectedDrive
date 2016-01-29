@@ -110,7 +110,7 @@ extension AppDelegate {
                 
             case .Failure(let error):
                 // TODO:
-                print(error)
+                self.showNotification("\(error.code) " + error.localizedDescription, text: error.localizedFailureReason)
             }
             
         }
@@ -149,13 +149,13 @@ extension AppDelegate {
                         
                     case .Failure(let error):
                         
-                        self.showNotification(error.localizedDescription, text: error.localizedFailureReason)
+                        self.showNotification("\(error.code) " + error.localizedDescription, text: error.localizedFailureReason)
                     }
                 }
 
             case .Failure(let error):
                 
-                self.showNotification(error.localizedDescription, text: error.localizedFailureReason)
+                self.showNotification("\(error.code) " + error.localizedDescription, text: error.localizedFailureReason)
                 
                 self.updateLabel("x", color: NSColor.redColor())
             }

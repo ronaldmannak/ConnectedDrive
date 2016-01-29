@@ -359,7 +359,7 @@ extension ConnectedDrive {
                 return
             }
             
-            Alamofire.request(Router.RangeMap(VIN: vehicle.VIN, login: credentials)).validate().responseObject { (response: Response<RangeMap, NSError>) in
+            Alamofire.request(Router.RangeMap(VIN: vehicle.VIN, login: credentials)).responseObject { (response: Response<RangeMap, NSError>) in
                 
                 completion(response.result)
             }

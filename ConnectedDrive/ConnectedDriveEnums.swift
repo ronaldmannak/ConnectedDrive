@@ -109,6 +109,7 @@ public enum DoorStatus: String {
     case Invalid                = "INVALID"
     case Intermediate           = "INTERMEDIATE"
     case Unlocked               = "UNLOCKED"
+    case Locked                 = "LOCKED"
     case UnknownKey             = "UNKNOWNKEY"      // Used when API returns unknown key
     
     // Human readable description, stored in Localizable.string
