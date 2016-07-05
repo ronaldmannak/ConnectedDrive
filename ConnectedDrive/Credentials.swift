@@ -27,7 +27,7 @@ struct Tokens {
 
 extension Tokens: Decodable {
  
-    static func decode(json: AnyObject) throws -> Tokens {
+    static func decode(_ json: AnyObject) throws -> Tokens {
         return Tokens(accessToken: try json => "access_token", refreshToken: try json => "refresh_token")
     }
 }

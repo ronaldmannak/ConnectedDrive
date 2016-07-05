@@ -58,39 +58,39 @@ public enum BMWiColor: String {
     public var description: String {
         switch self {
         case B72:
-            return NSLocalizedString("Ionic Silver metallic", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+            return NSLocalizedString("Ionic Silver metallic", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
         case B74:
-            return NSLocalizedString("Arravani Grey", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+            return NSLocalizedString("Arravani Grey", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
         case B78:
-            return NSLocalizedString("Solar Orange", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+            return NSLocalizedString("Solar Orange", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
         case B81:
-            return NSLocalizedString("Andesit Silver metallic", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+            return NSLocalizedString("Andesit Silver metallic", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
         case B85:
             let isStarWarsDay: Bool = {
                 // Star Wars day is May 4th
-                let calendar    = NSCalendar.currentCalendar()
-                let starWarsDay: NSDate = {
-                    let components      = NSDateComponents()
+                let calendar    = Calendar.current()
+                let starWarsDay: Date = {
+                    var components      = DateComponents()
                     components.day      = 4
                     components.month    = 5
-                    return calendar.dateFromComponents(components)!
+                    return calendar.date(from: components)!
                 }()
-                return calendar.isDate(NSDate(), inSameDayAsDate: starWarsDay)
+                return calendar.isDate(Date(), inSameDayAs: starWarsDay)
             }()
             if isStarWarsDay {
-                return NSLocalizedString("Stormtrooper", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+                return NSLocalizedString("Stormtrooper", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
             }
-            return NSLocalizedString("Capparis White", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+            return NSLocalizedString("Capparis White", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
         case C2U:
-            return NSLocalizedString("Platinum Silver", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+            return NSLocalizedString("Platinum Silver", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
         case C2V:
-            return NSLocalizedString("Mineral Grey", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+            return NSLocalizedString("Mineral Grey", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
         case C2W:
-            return NSLocalizedString("Fluid Black", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+            return NSLocalizedString("Fluid Black", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
         case C01:
-            return NSLocalizedString("Protonic Blue", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+            return NSLocalizedString("Protonic Blue", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
         case .UnknownKey:
-            return NSLocalizedString("Unknown color", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+            return NSLocalizedString("Unknown color", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
         }
     }
     
@@ -127,7 +127,7 @@ public struct Vehicle {
 
 extension Vehicle: Decodable {
     
-    public static func decode(json: AnyObject) throws -> Vehicle {
+    public static func decode(_ json: AnyObject) throws -> Vehicle {
         
         return try Vehicle(
             model: BMWiModel(rawValue: json => "model")!,

@@ -22,7 +22,7 @@ public struct RangeMap {
 
 extension RangeMap: Decodable {
 
-    public static func decode(json: AnyObject) throws -> RangeMap {
+    public static func decode(_ json: AnyObject) throws -> RangeMap {
         let rangeMapJSON = try json => "rangemap"
         return RangeMap(center: try rangeMapJSON => "center", polyLines: try rangeMapJSON => "rangemaps", quality: try rangeMapJSON => "quality")
     }
@@ -52,7 +52,7 @@ public struct RangeMapPolyLine {
 
 extension RangeMapPolyLine: Decodable {
     
-    public static func decode(json: AnyObject) throws -> RangeMapPolyLine {
+    public static func decode(_ json: AnyObject) throws -> RangeMapPolyLine {
         
         let type = try RangeMapPolyLineType(rawValue: json => "type")!
         let polyLine = try [CLLocationCoordinate2D].decode(json => "polyline")

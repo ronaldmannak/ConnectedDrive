@@ -49,9 +49,9 @@ public class ConnectedDrive {
      - LoggedIn:  User is successfully logged in
      */
     public enum State {
-        case LoggedOut
-        case LoggingIn
-        case LoggedIn
+        case loggedOut
+        case loggingIn
+        case loggedIn
     }
     
     public init() {}
@@ -101,12 +101,12 @@ public class ConnectedDrive {
     /// last used BMWHub stored in and fetched from the standard user defaults
     private var lastUsedHub: BMWHub? {
         get {
-            guard let hub = NSUserDefaults.standardUserDefaults().stringForKey("LastUsedHub") else { return nil }
+            guard let hub = UserDefaults.standard().string(forKey: "LastUsedHub") else { return nil }
             return BMWHub(rawValue: hub)
         }
         set {
-            NSUserDefaults.standardUserDefaults().setObject(newValue?.rawValue, forKey: "LastUsedHub")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard().set(newValue?.rawValue, forKey: "LastUsedHub")
+            UserDefaults.standard().synchronize()
         }
     }
     
@@ -114,12 +114,12 @@ public class ConnectedDrive {
         return credentials != nil && username != nil && password != nil
     }
     
-    public var state: State = .LoggedOut
+    public var state: State = .loggedOut
     
-    private static let notLoggedInError = VehicleError.errorWithCode(.NotLoggedIn, failureReason: "Not logged in")
+    private static let notLoggedInError = VehicleError.error(code: .notLoggedIn, failureReason: "Not logged in")
     
-    private func isNotAuthenticatedError(error: NSError) -> Bool {
-        return error.domain == Error.Domain && error.code == Error.Code.StatusCodeValidationFailed.rawValue && error.localizedDescription.rangeOfString("401") != nil
+    private func isNotAuthenticatedError(_ error: NSError) -> Bool {
+        return error.domain == Error.Domain && error.code == Error.Code.statusCodeValidationFailed.rawValue && error.localizedDescription.range(of: "401") != nil
     }
 }
 
@@ -136,36 +136,36 @@ extension ConnectedDrive {
      - parameter password:   ConnectedDrive password
      - parameter completion: Passes Result.Failure(NSError) or Result.Success(Credentials)
      */
-    public func login(username: String, password: String, completion:(Result<Credentials, NSError>) -> Void) {
+    public func login(_ username: String, password: String, completion:(Result<Credentials, NSError>) -> Void) {
         
-        if state == .LoggingIn {
+        if state == .loggingIn {
             // TODO: can we and return credentials when state changes to logged in?
         }
         
         // Log out so no server calls can be made while logging in is in progress
         logout()
-        state = .LoggingIn
+        state = .loggingIn
         
         let hub = lastUsedHub ?? BMWHub.Europe // Europe is the default server
         
-        Alamofire.request(Router.Login(username: username, password: password, hub: hub)).validate().responseObject { (response: Response<Tokens, NSError>) in
+        Alamofire.request(Router.login(username: username, password: password, hub: hub)).validate().responseObject { (response: Response<Tokens, NSError>) in
             
             switch response.result {
-            case .Success(let tokens):
+            case .success(let tokens):
                 
                 let credentials     = Credentials(hub: hub, tokens: tokens)
                 self.credentials    = credentials
                 self.username       = username
                 self.password       = password
-                self.state          = .LoggedIn
+                self.state          = .loggedIn
 
                 self.delegate?.didLogin()
-                completion(Result.Success(credentials))
+                completion(Result.success(credentials))
                 
-            case .Failure(let error):
+            case .failure(let error):
                 print("login failed: \(error)")
-                self.state = .LoggedOut
-                completion(Result.Failure(error))
+                self.state = .loggedOut
+                completion(Result.failure(error))
             }
         }
     }
@@ -176,12 +176,12 @@ extension ConnectedDrive {
      - parameter hub:        Optionally specify hub to log in
      - parameter completion: Passes `.NoUsernamePasswordStored` NSError in case no username and password were stored and will call `delegate?.shouldPresentLoginWindow()`. Will pass Credentials if auto login was successful.
      */
-    public func autoLogin(hub: BMWHub? = nil, completion:(Result<Credentials, NSError>) -> Void) {
+    public func autoLogin(_ hub: BMWHub? = nil, completion:(Result<Credentials, NSError>) -> Void) {
         
         guard let password = password, username = username, hub = hub ?? lastUsedHub else {
             delegate?.shouldPresentLoginWindow()
-            let error = VehicleError.errorWithCode(.NoUsernamePasswordStored, failureReason: "Autologin failed")
-            completion(Result.Failure(error))
+            let error = VehicleError.error(code: .noUsernamePasswordStored, failureReason: "Autologin failed")
+            completion(Result.failure(error))
             return
         }
         lastUsedHub = hub
@@ -194,14 +194,14 @@ extension ConnectedDrive {
      - parameter deleteStoredPassword: if true, username and password are permanently deleted from the keychain. 
      Usually this should be set to true only if a user explicitly selects 'logout' from the app.
      */
-    public func logout(deleteStoredPassword: Bool = false) {
+    public func logout(_ deleteStoredPassword: Bool = false) {
         
         if deleteStoredPassword {
             username = nil
             password = nil
         }
         credentials = nil
-        state = .LoggedOut
+        state = .loggedOut
         
         delegate?.didLogout()
     }
@@ -211,29 +211,29 @@ extension ConnectedDrive {
      
      - parameter completion: Passes credentials if successful, an error generated by autoLogin if not
      */
-    func refreshAccessToken(completion:(Result<Credentials, NSError>) -> Void) {
+    func refreshAccessToken(_ completion:(Result<Credentials, NSError>) -> Void) {
         
-        state = .LoggingIn
+        state = .loggingIn
         guard let credentials = credentials else {
             autoLogin(completion: completion)
             return
         }
         
-        Alamofire.request(Router.RefreshToken(login: credentials)).validate().responseObject { (response: Response<Tokens, NSError>) in
+        Alamofire.request(Router.refreshToken(login: credentials)).validate().responseObject { (response: Response<Tokens, NSError>) in
             
             switch response.result {
-            case .Success(let tokens):
+            case .success(let tokens):
                 
                 let updatedCredentials  = Credentials(hub: credentials.hub, tokens: tokens)
                 self.credentials        = updatedCredentials
-                self.state              = .LoggedIn
+                self.state              = .loggedIn
                 
-                completion(Result.Success(credentials))
+                completion(Result.success(credentials))
                 
-            case .Failure(let error):
+            case .failure(let error):
                 print("refresh token failed: \(error)")
-                self.state = .LoggedOut
-                completion(Result.Failure(error))
+                self.state = .loggedOut
+                completion(Result.failure(error))
             }
         }
     }
@@ -244,7 +244,7 @@ extension ConnectedDrive {
     public func deleteStoredItems() {
         Keychain.delete("username")
         Keychain.delete("password")
-        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "LastUsedHub")
+        UserDefaults.standard().set(nil, forKey: "LastUsedHub")
     }
 }
 
@@ -263,38 +263,36 @@ extension ConnectedDrive {
      - parameter completion: Invoked when server returns data. Result is either `Result.Success([Vehicle])` or `Result.Failure(NSError)`
      - parameter retryCount: For internal use only
      */
-    public func vehicles(retryCount: Int = 0, completion: (Result<[Vehicle], NSError>) -> Void) {
+    public func vehicles(_ retryCount: Int = 0, completion: (Result<[Vehicle], NSError>) -> Void) {
         
         guard let credentials = credentials else {
-            completion(Result.Failure(ConnectedDrive.notLoggedInError))
+            completion(Result.failure(ConnectedDrive.notLoggedInError))
             return
         }
         
-        Alamofire.request(Router.Vehicles(login: credentials)).validate().responseCollection("vehicles"){ (response: Response<[Vehicle], NSError>) -> Void in
+        Alamofire.request(Router.vehicles(login: credentials)).validate().responseCollection("vehicles"){ (response: Response<[Vehicle], NSError>) -> Void in
             
             switch response.result {
-            case .Success(let vehicles):
+            case .success(let vehicles):
                 
                 guard vehicles.count > 0 else {
-                    completion(Result.Failure(VehicleError.errorWithCode(.VehicleNotFound, failureReason: "No vehicles found")))
+                    completion(Result.failure(VehicleError.error(code: VehicleError.Code.vehicleNotFound, failureReason: "No vehicles found")))
                     return
                 }
-                completion(Result.Success(vehicles))
+                completion(Result.success(vehicles))
                 
-            case .Failure(let error):
+            case .failure(let error):
             
                 let tokenDidExpire = self.isNotAuthenticatedError(error)
                 if tokenDidExpire && retryCount < 3 {
-                    
-                    let delay = dispatch_time(DISPATCH_TIME_NOW, Int64((self.state == .LoggingIn ? 3 : 0) * Double(NSEC_PER_SEC)))
-                    dispatch_after(delay, dispatch_get_main_queue()) {
+                    DispatchQueue.main.after(when: .now() + (self.state == .loggingIn ? 3 : 0)) {
                         self.refreshAccessToken { result in
 
                             self.vehicles(retryCount + 1, completion: completion)
                         }
                     }
                 } else {
-                    completion(Result.Failure(error))
+                    completion(Result.failure(error))
                 }
             }
         }
@@ -306,34 +304,31 @@ extension ConnectedDrive {
      - parameter vehicle:    Vehicle
      - parameter completion: Invoked when server returns data. Result is either `Result.Success(VehicleStatus)` or `Result.Failure(NSError)`
      */
-    public func vehicleStatus(vehicle: Vehicle, retryCount: Int = 0, completion: (Result<VehicleStatus, NSError>) -> Void) {
+    public func vehicleStatus(_ vehicle: Vehicle, retryCount: Int = 0, completion: (Result<VehicleStatus, NSError>) -> Void) {
         
         let vehicleStatus: ConfineServer = { credentials in
             
             guard let credentials = credentials else {
-                completion(Result.Failure(ConnectedDrive.notLoggedInError))
+                completion(Result.failure(ConnectedDrive.notLoggedInError))
                 return
             }
             
-            Alamofire.request(Router.VehicleStatus(VIN: vehicle.VIN, login: credentials)).validate().responseObject { (response: Response<VehicleStatus, NSError>) in
+            Alamofire.request(Router.vehicleStatus(VIN: vehicle.VIN, login: credentials)).validate().responseObject { (response: Response<VehicleStatus, NSError>) in
                 
                 switch response.result {
-                case .Success(_):
+                case .success(_):
                     completion(response.result)
                     
-                case .Failure(let error):                    
+                case .failure(let error):
                     let tokenDidExpire = self.isNotAuthenticatedError(error)
                     if tokenDidExpire && retryCount < 3 {
-                        
-                        let delay = dispatch_time(DISPATCH_TIME_NOW, Int64((self.state == .LoggingIn ? 4 : 0) * Double(NSEC_PER_SEC)))
-                        dispatch_after(delay, dispatch_get_main_queue()) {
+                        DispatchQueue.main.after(when: .now() + (self.state == .loggingIn ? 4 : 0)) {
                             self.refreshAccessToken { result in
-                                
                                 self.vehicleStatus(vehicle, retryCount: retryCount + 1, completion: completion)
                             }
                         }
                     } else {
-                        completion(Result.Failure(error))
+                        completion(Result.failure(error))
                     }
                 }
             }
@@ -350,16 +345,16 @@ extension ConnectedDrive {
      - parameter completion: Invoked when server returns data. Result is `Result.Success(RangeMap)` in case of success
         or `Result.Failure(NSError)` in case of fail.
      */
-    public func rangeMap(vehicle: Vehicle, completion: (Result<RangeMap, NSError>) -> Void) {
+    public func rangeMap(_ vehicle: Vehicle, completion: (Result<RangeMap, NSError>) -> Void) {
         
         let rangeMap: ConfineServer = { credentials in
             
             guard let credentials = credentials else {
-                completion(Result.Failure(ConnectedDrive.notLoggedInError))
+                completion(Result.failure(ConnectedDrive.notLoggedInError))
                 return
             }
             
-            Alamofire.request(Router.RangeMap(VIN: vehicle.VIN, login: credentials)).responseObject { (response: Response<RangeMap, NSError>) in
+            Alamofire.request(Router.rangeMap(VIN: vehicle.VIN, login: credentials)).responseObject { (response: Response<RangeMap, NSError>) in
                 
                 completion(response.result)
             }
@@ -374,16 +369,16 @@ extension ConnectedDrive {
      
      - parameter completion: invoked when switch was completed or no switch was necessary
      */
-    private func confineServer(hub: BMWHub, completion: (credentials: Credentials?) -> Void) {
+    private func confineServer(_ hub: BMWHub, completion: (credentials: Credentials?) -> Void) {
         
         guard let credentials = credentials where hub.rawValue == credentials.hub.rawValue else {
             
             autoLogin(hub) { credentials in
                 switch credentials {
-                case .Failure(_):
+                case .failure(_):
                     completion(credentials: nil)
                     self.delegate?.shouldPresentLoginWindow()
-                case .Success(let credentials):
+                case .success(let credentials):
                     completion(credentials: credentials)
                 }
             }
@@ -398,30 +393,30 @@ extension ConnectedDrive {
  */
 extension ConnectedDrive {
     
-    public func executeCommand(vehicle: Vehicle, service: VehicleService, completion: (Result<ExecutionStatus, NSError>) -> Void) {
+    public func executeCommand(_ vehicle: Vehicle, service: VehicleService, completion: (Result<ExecutionStatus, NSError>) -> Void) {
         let command: ConfineServer = { credentials in
             
             guard let credentials = credentials else {
-                completion(Result.Failure(ConnectedDrive.notLoggedInError))
+                completion(Result.failure(ConnectedDrive.notLoggedInError))
                 return
             }
             
-            Alamofire.request(Router.ExecuteService(VIN: vehicle.VIN, service: service, login: credentials)).validate().responseObject { (response: Response<ExecutionStatus, NSError>) in
+            Alamofire.request(Router.executeService(VIN: vehicle.VIN, service: service, login: credentials)).validate().responseObject { (response: Response<ExecutionStatus, NSError>) in
                 completion(response.result)
             }
         }
         confineServer(vehicle.hub, completion: command)
     }
     
-    public func CommandStatus(vehicle: Vehicle, service: VehicleService, completion: (Result<ExecutionStatus, NSError>) -> Void) {
+    public func CommandStatus(_ vehicle: Vehicle, service: VehicleService, completion: (Result<ExecutionStatus, NSError>) -> Void) {
         let status: ConfineServer = { credentials in
             
             guard let credentials = credentials else {
-                completion(Result.Failure(ConnectedDrive.notLoggedInError))
+                completion(Result.failure(ConnectedDrive.notLoggedInError))
                 return
             }
             
-            Alamofire.request(Router.ServiceStatus(VIN: vehicle.VIN, service: service, login: credentials)).validate().responseObject { (response: Response<ExecutionStatus, NSError>) in
+            Alamofire.request(Router.serviceStatus(VIN: vehicle.VIN, service: service, login: credentials)).validate().responseObject { (response: Response<ExecutionStatus, NSError>) in
                 completion(response.result)
             }
         }

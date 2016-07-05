@@ -13,28 +13,28 @@ import Alamofire
 public enum Router: URLRequestConvertible {
     
     static var APIKey: String {
-        guard let info = NSBundle.mainBundle().infoDictionary, APIKey = info["APIKey"] as? String else {
+        guard let info = Bundle.main().infoDictionary, APIKey = info["APIKey"] as? String else {
             fatalError("No API key in info.plist found. Store Base64 encoded API key (looks similar to: a2V5OnNlY3JldA==). See also https://github.com/quentinsf/BMW-i-Remote")
         }
         return APIKey
     }
     
-    case Login(username: String, password: String, hub: BMWHub)
-    case RefreshToken(login: Credentials)
-    case Vehicles(login: Credentials)
-    case VehicleStatus(VIN: String, login: Credentials)
-    case LastTrip(VIN: String, login: Credentials)
-    case AllTrips(VIN: String, login: Credentials)
-    case ChargingTimes(VIN: String, login: Credentials)
-    case VehicleDestinations(VIN: String, login: Credentials)
-    case RangeMap(VIN: String, login: Credentials)
-    case ServiceStatus(VIN: String, service: VehicleService, login: Credentials)
-    case ExecuteService(VIN: String, service: VehicleService, login: Credentials)
-    case ChargingStations(login: Credentials)
+    case login(username: String, password: String, hub: BMWHub)
+    case refreshToken(login: Credentials)
+    case vehicles(login: Credentials)
+    case vehicleStatus(VIN: String, login: Credentials)
+    case lastTrip(VIN: String, login: Credentials)
+    case allTrips(VIN: String, login: Credentials)
+    case chargingTimes(VIN: String, login: Credentials)
+    case vehicleDestinations(VIN: String, login: Credentials)
+    case rangeMap(VIN: String, login: Credentials)
+    case serviceStatus(VIN: String, service: VehicleService, login: Credentials)
+    case executeService(VIN: String, service: VehicleService, login: Credentials)
+    case chargingStations(login: Credentials)
 
     private var method: Alamofire.Method {
         switch self {
-        case .Login(_,_,_), .ExecuteService(_,_,_), .RefreshToken(_):
+        case .login(_,_,_), .executeService(_,_,_), .refreshToken(_):
             return .POST
         default:
             return .GET
@@ -43,83 +43,83 @@ public enum Router: URLRequestConvertible {
     
     private var accessToken: String {
         switch self {
-        case .Login(_, _, _), .RefreshToken(_):
+        case .login(_, _, _), .refreshToken(_):
             return ""
-        case .Vehicles(let credentials):
+        case .vehicles(let credentials):
             return credentials.tokens.accessToken
-        case .VehicleStatus(_, let credentials):
+        case .vehicleStatus(_, let credentials):
             return credentials.tokens.accessToken
-        case .LastTrip(_, let credentials):
+        case .lastTrip(_, let credentials):
             return credentials.tokens.accessToken
-        case .AllTrips(_ , let credentials):
+        case .allTrips(_ , let credentials):
             return credentials.tokens.accessToken
-        case .ChargingTimes(_, let credentials):
+        case .chargingTimes(_, let credentials):
             return credentials.tokens.accessToken
-        case .VehicleDestinations(_, let credentials):
+        case .vehicleDestinations(_, let credentials):
             return credentials.tokens.accessToken
-        case .RangeMap(_, let credentials):
+        case .rangeMap(_, let credentials):
             return credentials.tokens.accessToken
-        case .ServiceStatus(_, _, let credentials):
+        case .serviceStatus(_, _, let credentials):
             return credentials.tokens.accessToken
-        case .ExecuteService(_, _, let credentials):
+        case .executeService(_, _, let credentials):
             return credentials.tokens.accessToken
-        case .ChargingStations(let credentials):
+        case .chargingStations(let credentials):
             return credentials.tokens.accessToken
         }
     }
     
     private var baseURLString: String {
         switch self {
-        case .Login(_, _, let hub):
+        case .login(_, _, let hub):
             return hub.baseURLString
-        case .RefreshToken(let credentials):
+        case .refreshToken(let credentials):
             return credentials.hub.baseURLString
-        case .Vehicles(let credentials):
+        case .vehicles(let credentials):
             return credentials.hub.baseURLString
-        case .VehicleStatus(_, let credentials):
+        case .vehicleStatus(_, let credentials):
             return credentials.hub.baseURLString
-        case .LastTrip(_, let credentials):
+        case .lastTrip(_, let credentials):
             return credentials.hub.baseURLString
-        case .AllTrips(_ , let credentials):
+        case .allTrips(_ , let credentials):
             return credentials.hub.baseURLString
-        case .ChargingTimes(_, let credentials):
+        case .chargingTimes(_, let credentials):
             return credentials.hub.baseURLString
-        case .VehicleDestinations(_, let credentials):
+        case .vehicleDestinations(_, let credentials):
             return credentials.hub.baseURLString
-        case .RangeMap(_, let credentials):
+        case .rangeMap(_, let credentials):
             return credentials.hub.baseURLString
-        case .ServiceStatus(_, _, let credentials):
+        case .serviceStatus(_, _, let credentials):
             return credentials.hub.baseURLString
-        case .ExecuteService(_, _, let credentials):
+        case .executeService(_, _, let credentials):
             return credentials.hub.baseURLString
-        case .ChargingStations(let credentials):
+        case .chargingStations(let credentials):
             return credentials.hub.baseURLString
         }
     }
     
     private var path: String {
         switch self {
-        case .Login(_,_,_), .RefreshToken(_):
+        case .login(_,_,_), .refreshToken(_):
             return "webapi/oauth/token/"
-        case .Vehicles(_):
+        case .vehicles(_):
             return "/webapi/v1/user/vehicles/"
-        case .VehicleStatus(let VIN, _):
+        case .vehicleStatus(let VIN, _):
             return "/webapi/v1/user/vehicles/\(VIN)/status"
-        case .LastTrip(let VIN, _):
+        case .lastTrip(let VIN, _):
             return "/webapi/v1/user/vehicles/\(VIN)/statistics/lastTrip"
-        case .AllTrips(let VIN, _):
+        case .allTrips(let VIN, _):
             return "/webapi/v1/user/vehicles/\(VIN)/statistics/allTrips"
-        case .ChargingTimes(let VIN, _):
+        case .chargingTimes(let VIN, _):
             return "/webapi/v1/user/vehicles/\(VIN)/chargingprofile"
-        case .VehicleDestinations(let VIN, _):
+        case .vehicleDestinations(let VIN, _):
             return "/webapi/v1/user/vehicles/\(VIN)/destinations"
-        case .RangeMap(let VIN, _):
+        case .rangeMap(let VIN, _):
             return "/webapi/v1/user/vehicles/\(VIN)/rangemap"
-        case .ServiceStatus(let VIN, let service, _):
+        case .serviceStatus(let VIN, let service, _):
             return "/webapi/v1/user/vehicles/\(VIN)/serviceExecutionStatus?serviceType=\(service.rawValue)" // TODO: parameter in dict?
-        case .ExecuteService(let VIN, _, _):
+        case .executeService(let VIN, _, _):
             return "/webapi/v1/user/vehicles/\(VIN)/executeService"
-        case .ChargingStations(_):
+        case .chargingStations(_):
             return "webapi/v1/chargingstations/dynamicdata"
         }
     }
@@ -128,21 +128,21 @@ public enum Router: URLRequestConvertible {
         switch self {
 //        case .VehicleStatus:
 //            return ["deviceTime" : "2015-12-10T16:47:03-500"] // deviceTime seems to be optional
-        case .Login(let username, let password, _):
+        case .login(let username, let password, _):
             return [
                 "grant_type"        : "password",
                 "username"          : username,
                 "password"          : password,
                 "scope"             : "remote_services vehicle_data",
             ]
-        case .RefreshToken(let credentials):
+        case .refreshToken(let credentials):
             return [
                 "grant_type"        : "refresh_token",
                 "refresh_token"     : credentials.tokens.refreshToken
             ]
-        case .ExecuteService(_, let service, _):
+        case .executeService(_, let service, _):
             return ["serviceType"   : service.rawValue]
-        case .ServiceStatus(_, let service, _):
+        case .serviceStatus(_, let service, _):
             return ["serviceType"   : service.rawValue]
         default:
             return nil
@@ -150,29 +150,30 @@ public enum Router: URLRequestConvertible {
     }
     
     private var authorizationHeader: String {
+        
         switch self {
-        case .Login(_,_,_), .RefreshToken(_):
+        case .login(_,_,_), .refreshToken(_):
             return "Basic " + Router.APIKey
         default:
             return "Bearer " + (accessToken)
         }
     }
     
-    public var URLRequest: NSMutableURLRequest {
+    public var urlRequest: URLRequest {
         
-        let URL = NSURL(string: baseURLString)!
-        let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
-        mutableURLRequest.HTTPMethod = method.rawValue
-        mutableURLRequest.setValue(authorizationHeader, forHTTPHeaderField: "Authorization")
+        let URL = Foundation.URL(string: baseURLString)!
+        var request = URLRequest(url: try! URL.appendingPathComponent(path))
+        request.httpMethod = method.rawValue
+        request.setValue(authorizationHeader, forHTTPHeaderField: "Authorization")
         
         if parameters == nil {
-            return mutableURLRequest
+            return request
         } else {
             switch method {
             case .POST:
-                return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: parameters).0
+                return Alamofire.ParameterEncoding.url.encode(request, parameters: parameters).0
             default:
-                return Alamofire.ParameterEncoding.URLEncodedInURL.encode(mutableURLRequest, parameters: parameters).0
+                return Alamofire.ParameterEncoding.urlEncodedInURL.encode(request, parameters: parameters).0
             }
         }
     }

@@ -51,7 +51,7 @@ public enum ChargingStatus: String {
     
     // Human readable description, stored in Localizable.string
     public var description: String {
-        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
     }
     
     init(string: String?) {
@@ -89,7 +89,7 @@ public enum ConnectionStatus: String {
 
     // Human readable description, stored in Localizable.string
     public var description: String {
-        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
     }
     
     init(string: String?) {
@@ -115,7 +115,7 @@ public enum DoorStatus: String {
     
     // Human readable description, stored in Localizable.string
     public var description: String {
-        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
     }
     
     init(string: String?) {
@@ -137,7 +137,7 @@ public enum LightStatus: String {
     
     // Human readable description, stored in Localizable.string
     public var description: String {
-        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
     }
     
     init(string: String?) {
@@ -195,7 +195,7 @@ public enum VehicleService: String {
     
     // Human readable description, stored in Localizable.string
     public var description: String {
-        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
     }
     
     init(string: String) {
@@ -223,7 +223,7 @@ public enum RequestStatus: String {
     
     // Human readable description, stored in Localizable.string
     public var description: String {
-        return NSLocalizedString(self.rawValue, tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "")
+        return NSLocalizedString(self.rawValue, tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "")
     }
     
     init(string: String) {

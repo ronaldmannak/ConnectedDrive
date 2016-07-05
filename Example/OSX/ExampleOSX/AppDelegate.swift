@@ -10,9 +10,9 @@ import Cocoa
 import MapKit
 import ConnectedDrive
 
-enum FetchInterval: NSTimeInterval {
-    case Regular    = 600 // 10 minutes
-    case Often      = 60  // 1 minute
+enum FetchInterval: TimeInterval {
+    case regular    = 600 // 10 minutes
+    case often      = 60  // 1 minute
 }
 
 @NSApplicationMain
@@ -20,11 +20,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     
-    let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-2)
+    let statusItem = NSStatusBar.system().statusItem(withLength: -2)
     let popup = NSPopover()
     var eventMonitor: EventMonitor?
     let connectedDrive = ConnectedDrive()
-    var timer: NSTimer?
+    var timer: Timer?
     
     // Cache of latest vehicle data
     var vehicleList: [Vehicle]?
@@ -40,18 +40,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         
 //        connectedDrive.deleteStoredItems() // For debug purposes only
         connectedDrive.delegate = self
         
         // Register for sleep and wake notifications
-        NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self, selector: Selector("wakeNotification:"), name: NSWorkspaceDidWakeNotification, object: nil)
-        NSWorkspace.sharedWorkspace().notificationCenter.addObserver(self, selector: Selector("sleepNotification:"), name: NSWorkspaceWillSleepNotification, object: nil)
+        NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(AppDelegate.wakeNotification(_:)), name: NSNotification.Name.NSWorkspaceDidWake, object: nil)
+        NSWorkspace.shared().notificationCenter.addObserver(self, selector: #selector(AppDelegate.sleepNotification(_:)), name: NSNotification.Name.NSWorkspaceWillSleep, object: nil)
         
         // Create EventMonitor to hide popup windows when user clicks elsewhere on the screen
-        eventMonitor = EventMonitor(mask: NSEventMask.LeftMouseDownMask) { [unowned self] event in
-            if self.popup.shown {
+        eventMonitor = EventMonitor(mask: NSEventMask.leftMouseDown) { [unowned self] event in
+            if self.popup.isShown {
                 self.closePopup(event)
             }
         }
@@ -62,18 +62,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func applicationWillTerminate(notification: NSNotification) {
-        NSWorkspace.sharedWorkspace().notificationCenter.removeObserver(self)
+    func applicationWillTerminate(_ notification: Notification) {
+        NSWorkspace.shared().notificationCenter.removeObserver(self)
     }
     
 
-    func wakeNotification(notification: NSNotification) {
+    func wakeNotification(_ notification: Notification) {
         connectedDrive.autoLogin { result in
-            self.createTimer(.Regular)
+            self.createTimer(.regular)
         }
     }
     
-    func sleepNotification(notification: NSNotification) {
+    func sleepNotification(_ notification: Notification) {
         removeTimer()
     }
 }
@@ -84,10 +84,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 extension AppDelegate {
     
-    func createTimer(interval: FetchInterval) {
+    func createTimer(_ interval: FetchInterval) {
 
         timer?.invalidate()
-        timer = NSTimer.scheduledTimerWithTimeInterval(interval.rawValue, target: self, selector: Selector("fetchStatusFromServer"), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: interval.rawValue, target: self, selector: #selector(AppDelegate.fetchStatusFromServer), userInfo: nil, repeats: true)
         timer?.fire()
     }
     
@@ -101,14 +101,14 @@ extension AppDelegate {
         self.connectedDrive.vehicles { result in
             
             switch result {
-            case .Success(let vehicles):
+            case .success(let vehicles):
                 
                 self.vehicleList = vehicles
                 self.vehicle = vehicles.first
                 
-                self.createTimer(.Regular) // Timer fetches vehicle status immediately
+                self.createTimer(.regular) // Timer fetches vehicle status immediately
                 
-            case .Failure(let error):
+            case .failure(let error):
                 // TODO:
                 self.showNotification("\(error.code) " + error.localizedDescription, text: error.localizedFailureReason)
             }
@@ -125,14 +125,14 @@ extension AppDelegate {
         connectedDrive.vehicleStatus(vehicle) { status in
             
             switch status {
-            case .Success(let status):
+            case .success(let status):
                 
                 if let previousVehicleStatus = self.vehicleStatus where previousVehicleStatus.updateReason.rawValue != status.updateReason.rawValue {
     
                     // Received a new update reason, show banner to notify user
-                    let timeFormat = NSDateFormatter()
+                    let timeFormat = DateFormatter()
                     timeFormat.dateFormat = "h:mm a"
-                    let timeStamp = timeFormat.stringFromDate(status.updateTime)
+                    let timeStamp = timeFormat.string(from: status.updateTime)
                 
                     self.showNotification(status.updateReason.description + " " + timeStamp, text: NSLocalizedString("Previous: ", comment: "") + previousVehicleStatus.updateReason.description)
                 }
@@ -143,21 +143,21 @@ extension AppDelegate {
                 self.connectedDrive.rangeMap(vehicle) { map in
                     
                     switch map {
-                    case .Success(let rangeMap):
+                    case .success(let rangeMap):
                         
                         self.rangeMap = rangeMap
                         
-                    case .Failure(let error):
+                    case .failure(let error):
                         
                         self.showNotification("\(error.code) " + error.localizedDescription, text: error.localizedFailureReason)
                     }
                 }
 
-            case .Failure(let error):
+            case .failure(let error):
                 
                 self.showNotification("\(error.code) " + error.localizedDescription, text: error.localizedFailureReason)
                 
-                self.updateLabel("x", color: NSColor.redColor())
+                self.updateLabel("x", color: NSColor.red())
             }
         }
     }
@@ -169,14 +169,14 @@ extension AppDelegate {
         rangeMap = nil
     }
     
-    func selectVehicleMenuAction(sender: AnyObject) {
+    func selectVehicleMenuAction(_ sender: AnyObject) {
         guard let menuItem = sender as? NSMenuItem, vehicleList = vehicleList where menuItem.tag < vehicleList.count else {
             return
         }
         selectVehicle(vehicleList[menuItem.tag])
     }
     
-    func selectVehicle(vehicle: Vehicle) {
+    func selectVehicle(_ vehicle: Vehicle) {
         self.vehicle = vehicle
         self.vehicleStatus = nil
         self.rangeMap = nil
@@ -197,29 +197,29 @@ extension AppDelegate {
             let percentage = status.chargingLevelHv
             let color: NSColor
             if percentage == 100 {
-                color = NSColor.greenColor()
+                color = NSColor.green()
             } else if status.chargingStatus == .Charging {
-                color = NSColor.blueColor()
+                color = NSColor.blue()
             } else if percentage <= 5 {
-                color = NSColor.redColor()
+                color = NSColor.red()
             } else {
-                color = NSColor.blackColor()
+                color = NSColor.black()
             }
             updateLabel("\(percentage)" + (percentage == 100 ? "" : "%"), color: color)
             
         } else {
             
-            updateLabel("...", color: NSColor.grayColor())
+            updateLabel("...", color: NSColor.gray())
         }
         
         updateMenu()
     }
     
-    func updateLabel(percentage: String, color: NSColor) {
+    func updateLabel(_ percentage: String, color: NSColor) {
         
         guard let button = statusItem.button else { return }
         
-        let title = NSAttributedString(string: percentage, attributes: [NSForegroundColorAttributeName: color])
+        let title = AttributedString(string: percentage, attributes: [NSForegroundColorAttributeName: color])
         button.attributedTitle = title
     }
     
@@ -227,11 +227,11 @@ extension AppDelegate {
         
         let menu: NSMenu
         switch connectedDrive.state {
-        case .LoggedIn:
+        case .loggedIn:
             menu = createLoggedInMenu()
-        case .LoggedOut:
+        case .loggedOut:
             menu = createLoggedOutMenu()
-        case .LoggingIn:
+        case .loggingIn:
             menu = createLoggingInMenu()
         }
         statusItem.menu = menu
@@ -251,32 +251,32 @@ extension AppDelegate {
         vehicleItem.submenu = createVehicleSelectMenu()
         
         // Last Event
-        let timeFormat = NSDateFormatter()
+        let timeFormat = DateFormatter()
         timeFormat.dateFormat = "h:mm a"
-        menu.addItemWithTitle(status.updateReason.description + NSLocalizedString(" at ", comment: "") + timeFormat.stringFromDate(status.updateTime), action: nil, keyEquivalent: "")        
-        menu.addItem(NSMenuItem.separatorItem())
+        _ = menu.addItem(withTitle: status.updateReason.description + NSLocalizedString(" at ", comment: "") + timeFormat.string(from: status.updateTime), action: nil, keyEquivalent: "")
+        menu.addItem(NSMenuItem.separator())
         
         // If charging, add estimated time until full
         if status.chargingTimeRemaining != nil {
-            menu.addItemWithTitle("Time until full: \(status.chargingTimeRemainingString)", action: nil, keyEquivalent: "")
+            menu.addItem(withTitle: "Time until full: \(status.chargingTimeRemainingString)", action: nil, keyEquivalent: "")
         }
         
         // Range
-        menu.addItemWithTitle("Range: \(status.remainingRangeMi) miles", action: nil, keyEquivalent: "")
+        menu.addItem(withTitle: "Range: \(status.remainingRangeMi) miles", action: nil, keyEquivalent: "")
         
         // Doors and windows
-        menu.addItemWithTitle(NSLocalizedString("Doors:", comment: "") + " " + status.doorLockState.description, action: nil, keyEquivalent: "")
-        menu.addItemWithTitle(NSLocalizedString("Windows:", comment: "") + " " + status.windowState.description, action: nil, keyEquivalent: "")
+        menu.addItem(withTitle: NSLocalizedString("Doors:", comment: "") + " " + status.doorLockState.description, action: nil, keyEquivalent: "")
+        menu.addItem(withTitle: NSLocalizedString("Windows:", comment: "") + " " + status.windowState.description, action: nil, keyEquivalent: "")
         
         // Update Now
-        menu.addItemWithTitle(NSLocalizedString("Update now", comment: "") + " (last update \(timeFormat.stringFromDate(status.fetchTime)))", action: Selector("fetchStatusFromServer"), keyEquivalent: "u")
+        menu.addItem(withTitle: NSLocalizedString("Update now", comment: "") + " (last update \(timeFormat.string(from: status.fetchTime)))", action: #selector(AppDelegate.fetchStatusFromServer), keyEquivalent: "u")
 
-        menu.addItem(NSMenuItem.separatorItem())
+        menu.addItem(NSMenuItem.separator())
 
         // Vehicle location
         if let location = status.location {
 
-            let vehicleLocationItem = NSMenuItem(title: NSLocalizedString("Vehicle location", comment: ""), action: Selector("viewVehicleLocation:"), keyEquivalent: "l")
+            let vehicleLocationItem = NSMenuItem(title: NSLocalizedString("Vehicle location", comment: ""), action: #selector(AppDelegate.viewVehicleLocation(_:)), keyEquivalent: "l")
             menu.addItem(vehicleLocationItem)
 
             let vehicleLocationSubmenu = NSMenu()
@@ -290,9 +290,9 @@ extension AppDelegate {
         // Range map
         if let rangeMap = rangeMap {
 
-            let rangeItem = NSMenuItem(title: NSLocalizedString("Range map", comment: ""), action: Selector("viewRange:"), keyEquivalent: "r")
+            let rangeItem = NSMenuItem(title: NSLocalizedString("Range map", comment: ""), action: #selector(AppDelegate.viewRange(_:)), keyEquivalent: "r")
             menu.addItem(rangeItem)
-            menu.addItem(NSMenuItem.separatorItem())
+            menu.addItem(NSMenuItem.separator())
 
             let rangeSubmenu = NSMenu()
             let rangeMapItem = NSMenuItem()
@@ -301,7 +301,7 @@ extension AppDelegate {
             rangeSubmenu.addItem(rangeMapItem)
             rangeItem.submenu = rangeSubmenu
         } else {
-            menu.addItemWithTitle(NSLocalizedString("Range map is loading...", comment: ""), action: nil, keyEquivalent: "")
+            menu.addItem(withTitle: NSLocalizedString("Range map is loading...", comment: ""), action: nil, keyEquivalent: "")
         }
         
         // Command submenu
@@ -311,32 +311,32 @@ extension AppDelegate {
         menu.addItem(commandItem)
         
         // Quit
-        if menu.itemArray.last != NSMenuItem.separatorItem() {
-            menu.addItem(NSMenuItem.separatorItem())
+        if menu.items.last != NSMenuItem.separator() {
+            menu.addItem(NSMenuItem.separator())
         }
-        menu.addItemWithTitle(NSLocalizedString("Log out", comment: ""), action: Selector("logout:"), keyEquivalent: "l")
-        menu.addItemWithTitle(NSLocalizedString("Quit", comment: ""), action: Selector("terminate:"), keyEquivalent: "q")
+        menu.addItem(withTitle: NSLocalizedString("Log out", comment: ""), action: #selector(AppDelegate.logout(_:)), keyEquivalent: "l")
+        menu.addItem(withTitle: NSLocalizedString("Quit", comment: ""), action: #selector(quitApp(_:)), keyEquivalent: "q")
         return menu
     }
 
     func createLoggedOutMenu() -> NSMenu {
         let menu = NSMenu()
-        menu.addItemWithTitle("Login", action: Selector("showLogin:"), keyEquivalent: "l")
+        menu.addItem(withTitle: "Login", action: #selector(AppDelegate.showLogin(_:)), keyEquivalent: "l")
         
         // Quit
-        menu.addItem(NSMenuItem.separatorItem())
-        menu.addItem(NSMenuItem(title: NSLocalizedString("Quit", comment: ""), action: Selector("terminate:"), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: NSLocalizedString("Quit", comment: ""), action: #selector(quitApp(_:)), keyEquivalent: "q"))
         return menu
     }
     
     func createLoggingInMenu() -> NSMenu {
         
         let menu = NSMenu()
-        menu.addItemWithTitle(NSLocalizedString("Logging in...", comment: ""), action: nil, keyEquivalent: "")
+        menu.addItem(withTitle: NSLocalizedString("Logging in...", comment: ""), action: nil, keyEquivalent: "")
         
         // Quit
-        menu.addItem(NSMenuItem.separatorItem())
-        menu.addItem(NSMenuItem(title: NSLocalizedString("Quit", comment: ""), action: Selector("terminate:"), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: NSLocalizedString("Quit", comment: ""), action: #selector(quitApp(_:)), keyEquivalent: "q"))
         return menu
     }
 
@@ -351,7 +351,7 @@ extension AppDelegate {
         for i in 0 ..< vehicleList.count {
             let vehicle = vehicleList[i]
             let title = vehicle.model.description + " " + vehicle.color.description
-            let item = NSMenuItem(title: title, action: Selector("selectVehicleMenuAction:"), keyEquivalent: "")
+            let item = NSMenuItem(title: title, action: #selector(AppDelegate.selectVehicleMenuAction(_:)), keyEquivalent: "")
             item.tag = i
             menu.addItem(item)
         }
@@ -363,15 +363,15 @@ extension AppDelegate {
         let menu = NSMenu()
         
         // Horn
-        let hornItem = NSMenuItem(title: NSLocalizedString("Horn", comment: ""), action: Selector("hornBlow:"), keyEquivalent: "h")
+        let hornItem = NSMenuItem(title: NSLocalizedString("Horn", comment: ""), action: #selector(AppDelegate.hornBlow(_:)), keyEquivalent: "h")
         menu.addItem(hornItem)
         
         // Flash Headlights
-        let flashHeadlights = NSMenuItem(title: NSLocalizedString("Flash headlights", comment: ""), action: Selector("flashHeadlights:"), keyEquivalent: "f")
+        let flashHeadlights = NSMenuItem(title: NSLocalizedString("Flash headlights", comment: ""), action: #selector(AppDelegate.flashHeadlights(_:)), keyEquivalent: "f")
         menu.addItem(flashHeadlights)
         
         // Lock doors
-        let lockDoorsItem = NSMenuItem(title: NSLocalizedString("Lock doors", comment: ""), action: Selector("lockDoors:"), keyEquivalent: "l")
+        let lockDoorsItem = NSMenuItem(title: NSLocalizedString("Lock doors", comment: ""), action: #selector(AppDelegate.lockDoors(_:)), keyEquivalent: "l")
         menu.addItem(lockDoorsItem)
         
         return menu
@@ -384,26 +384,26 @@ extension AppDelegate {
 
 extension AppDelegate {
     
-    func hornBlow(sender: AnyObject) {
+    func hornBlow(_ sender: AnyObject) {
         sendCommand(.HornBlow)
     }
     
-    func flashHeadlights(sender: AnyObject) {
+    func flashHeadlights(_ sender: AnyObject) {
         sendCommand(.LightFlash)
     }
     
-    func lockDoors(sender: AnyObject) {
+    func lockDoors(_ sender: AnyObject) {
         sendCommand(.DoorLock)
     }
     
-    func sendCommand(service: VehicleService) {
+    func sendCommand(_ service: VehicleService) {
         guard let vehicle = vehicle else { return }
         connectedDrive.executeCommand(vehicle, service: service) { result in
             
             switch result {
-            case .Failure(let error):
+            case .failure(let error):
                 print (error)
-            case .Success(let status):
+            case .success(let status):
                 print(status)
             }
         }
@@ -417,11 +417,11 @@ extension AppDelegate {
 extension AppDelegate {
     
     // Empty methods to force view vehicle menu item to become active
-    func viewVehicleLocation(sender: AnyObject?) {}
+    func viewVehicleLocation(_ sender: AnyObject?) {}
     
-    func viewRange(sender: AnyObject?) {}
+    func viewRange(_ sender: AnyObject?) {}
     
-    func createMapView(pinLocation: CLLocation? = nil, rangeMap: RangeMap? = nil) -> MKMapView {
+    func createMapView(_ pinLocation: CLLocation? = nil, rangeMap: RangeMap? = nil) -> MKMapView {
         
         let mapView = MKMapView(frame: NSRect(x: 0, y: 0, width: 300, height: 300))
         
@@ -445,11 +445,11 @@ extension AppDelegate {
             for polyLineStruct in rangeMap.polyLines {
                 var polyLine = polyLineStruct.polyLine
                 let polygon = MKPolygon(coordinates: &polyLine, count: polyLine.count)
-                mapView.addOverlay(polygon, level: .AboveRoads)
+                mapView.add(polygon, level: .aboveRoads)
                 
                 // Make sure all ranges fit in window
                 if polyLineStruct.type == .EcoProPlus {
-                    mapView.setVisibleMapRect(polygon.boundingMapRect, edgePadding: NSEdgeInsets(top: 10, left: 10, bottom: 10, right: 10), animated: false)
+                    mapView.setVisibleMapRect(polygon.boundingMapRect, edgePadding: EdgeInsets(top: 10, left: 10, bottom: 10, right: 10), animated: false)
                 }
             }
         }
@@ -460,13 +460,13 @@ extension AppDelegate {
 
 extension AppDelegate: MKMapViewDelegate {
     
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
-        if overlay.isKindOfClass(MKPolygon) {
+        if overlay is MKPolygon {
             // draw the track
             let polyLine = overlay
             let polyLineRenderer = MKPolygonRenderer(overlay: polyLine)
-            polyLineRenderer.strokeColor = NSColor.blueColor()
+            polyLineRenderer.strokeColor = NSColor.blue()
             polyLineRenderer.lineWidth = 1.0
             
             return polyLineRenderer
@@ -521,24 +521,28 @@ extension AppDelegate: ConnectedDriveDelegate {
 
 extension AppDelegate {
     
-    func showLogin(sender: AnyObject?) {
+    func showLogin(_ sender: AnyObject?) {
         let loginViewController = LoginViewController(delegate: self)
         popup.contentViewController = loginViewController
         showPopup(sender)
     }
     
-    func logout(sender: AnyObject?) {
+    func logout(_ sender: AnyObject?) {
         connectedDrive.logout(true)
     }
     
-    func showPopup(sender: AnyObject?) {
+    func showPopup(_ sender: AnyObject?) {
         if let button = statusItem.button {
-            popup.showRelativeToRect(button.bounds, ofView: button, preferredEdge: NSRectEdge.MinY)
+            popup.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
         }
     }
     
-    func closePopup(sender: AnyObject?) {
+    func closePopup(_ sender: AnyObject?) {
         popup.performClose(sender)
+    }
+    
+    func quitApp(_ sender: AnyObject?) {
+        NSApplication.shared().terminate(self)
     }
 }
 
@@ -549,7 +553,7 @@ extension AppDelegate {
 
 extension AppDelegate: LoginDelegate {
     
-    func userProvidedUsername(username: String, password: String) {
+    func userProvidedUsername(_ username: String, password: String) {
 
         // Hide window
         closePopup(self)
@@ -566,7 +570,7 @@ extension AppDelegate: LoginDelegate {
 extension AppDelegate: NSUserNotificationCenterDelegate {
     
     // Forces notification to always show
-    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
     }
 }
@@ -577,11 +581,11 @@ extension AppDelegate: NSUserNotificationCenterDelegate {
 
 extension AppDelegate {
     
-    func showNotification(title: String?, text: String?) {
+    func showNotification(_ title: String?, text: String?) {
         let notification = NSUserNotification()
         notification.title = title ?? nil
         notification.informativeText = text ?? nil
-        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
-        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        NSUserNotificationCenter.default().delegate = self
+        NSUserNotificationCenter.default().deliver(notification)
     }
 }
