@@ -101,12 +101,12 @@ public class ConnectedDrive {
     /// last used BMWHub stored in and fetched from the standard user defaults
     private var lastUsedHub: BMWHub? {
         get {
-            guard let hub = UserDefaults.standard().string(forKey: "LastUsedHub") else { return nil }
+            guard let hub = UserDefaults.standard.string(forKey: "LastUsedHub") else { return nil }
             return BMWHub(rawValue: hub)
         }
         set {
-            UserDefaults.standard().set(newValue?.rawValue, forKey: "LastUsedHub")
-            UserDefaults.standard().synchronize()
+            UserDefaults.standard.set(newValue?.rawValue, forKey: "LastUsedHub")
+            UserDefaults.standard.synchronize()
         }
     }
     
@@ -115,9 +115,7 @@ public class ConnectedDrive {
     }
     
     public var state: State = .loggedOut
-    
-    private static let notLoggedInError = VehicleError.error(code: .notLoggedIn, failureReason: "Not logged in")
-    
+        
     private func isNotAuthenticatedError(_ error: NSError) -> Bool {
         return error.domain == Error.Domain && error.code == Error.Code.statusCodeValidationFailed.rawValue && error.localizedDescription.range(of: "401") != nil
     }
@@ -180,7 +178,7 @@ extension ConnectedDrive {
         
         guard let password = password, username = username, hub = hub ?? lastUsedHub else {
             delegate?.shouldPresentLoginWindow()
-            let error = VehicleError.error(code: .noUsernamePasswordStored, failureReason: "Autologin failed")
+            let error = VehicleError.noUsernamePasswordStored.error()
             completion(Result.failure(error))
             return
         }
@@ -244,7 +242,7 @@ extension ConnectedDrive {
     public func deleteStoredItems() {
         Keychain.delete("username")
         Keychain.delete("password")
-        UserDefaults.standard().set(nil, forKey: "LastUsedHub")
+        UserDefaults.standard.set(nil, forKey: "LastUsedHub")
     }
 }
 
@@ -266,7 +264,7 @@ extension ConnectedDrive {
     public func vehicles(_ retryCount: Int = 0, completion: (Result<[Vehicle], NSError>) -> Void) {
         
         guard let credentials = credentials else {
-            completion(Result.failure(ConnectedDrive.notLoggedInError))
+            completion(Result.failure(VehicleError.notLoggedIn.error()))
             return
         }
         
@@ -276,7 +274,7 @@ extension ConnectedDrive {
             case .success(let vehicles):
                 
                 guard vehicles.count > 0 else {
-                    completion(Result.failure(VehicleError.error(code: VehicleError.Code.vehicleNotFound, failureReason: "No vehicles found")))
+                    completion(Result.failure(VehicleError.vehicleNotFound.error()))
                     return
                 }
                 completion(Result.success(vehicles))
@@ -309,7 +307,7 @@ extension ConnectedDrive {
         let vehicleStatus: ConfineServer = { credentials in
             
             guard let credentials = credentials else {
-                completion(Result.failure(ConnectedDrive.notLoggedInError))
+                completion(Result.failure(VehicleError.notLoggedIn.error()))
                 return
             }
             
@@ -350,7 +348,7 @@ extension ConnectedDrive {
         let rangeMap: ConfineServer = { credentials in
             
             guard let credentials = credentials else {
-                completion(Result.failure(ConnectedDrive.notLoggedInError))
+                completion(Result.failure(VehicleError.notLoggedIn.error()))
                 return
             }
             
@@ -397,7 +395,7 @@ extension ConnectedDrive {
         let command: ConfineServer = { credentials in
             
             guard let credentials = credentials else {
-                completion(Result.failure(ConnectedDrive.notLoggedInError))
+                completion(Result.failure(VehicleError.notLoggedIn.error()))
                 return
             }
             
@@ -412,7 +410,7 @@ extension ConnectedDrive {
         let status: ConfineServer = { credentials in
             
             guard let credentials = credentials else {
-                completion(Result.failure(ConnectedDrive.notLoggedInError))
+                completion(Result.failure(VehicleError.notLoggedIn.error()))
                 return
             }
             

@@ -13,7 +13,7 @@ import Alamofire
 public enum Router: URLRequestConvertible {
     
     static var APIKey: String {
-        guard let info = Bundle.main().infoDictionary, APIKey = info["APIKey"] as? String else {
+        guard let info = Bundle.main.infoDictionary, APIKey = info["APIKey"] as? String else {
             fatalError("No API key in info.plist found. Store Base64 encoded API key (looks similar to: a2V5OnNlY3JldA==). See also https://github.com/quentinsf/BMW-i-Remote")
         }
         return APIKey

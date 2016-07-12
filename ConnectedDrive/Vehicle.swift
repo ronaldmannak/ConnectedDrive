@@ -68,7 +68,7 @@ public enum BMWiColor: String {
         case B85:
             let isStarWarsDay: Bool = {
                 // Star Wars day is May 4th
-                let calendar    = Calendar.current()
+                let calendar    = Calendar.current
                 let starWarsDay: Date = {
                     var components      = DateComponents()
                     components.day      = 4
