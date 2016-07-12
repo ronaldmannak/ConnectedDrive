@@ -585,7 +585,7 @@ extension AppDelegate {
         let notification = NSUserNotification()
         notification.title = title ?? nil
         notification.informativeText = text ?? nil
-        NSUserNotificationCenter.default().delegate = self
-        NSUserNotificationCenter.default().deliver(notification)
+        NSUserNotificationCenter.default.delegate = self
+        NSUserNotificationCenter.default.deliver(notification)
     }
 }
