@@ -12,20 +12,20 @@ import Security
 
 class Keychain {
     
-    class func save(key: String, data: NSData) -> Bool {
+    class func save(_ key: String, data: Data) -> Bool {
         let query = [
             kSecClass as String       : kSecClassGenericPassword as String,
             kSecAttrAccount as String : key,
             kSecValueData as String   : data ]
         
-        SecItemDelete(query as CFDictionaryRef)
+        SecItemDelete(query as CFDictionary)
         
-        let status: OSStatus = SecItemAdd(query as CFDictionaryRef, nil)
+        let status: OSStatus = SecItemAdd(query as CFDictionary, nil)
         
         return status == noErr
     }
     
-    class func load(key: String) -> NSData? {
+    class func load(_ key: String) -> Data? {
         let query = [
             kSecClass as String       : kSecClassGenericPassword,
             kSecAttrAccount as String : key,
@@ -36,19 +36,19 @@ class Keychain {
         let status = withUnsafeMutablePointer(&dataTypeRef) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
         
         if status == errSecSuccess {
-            if let data = dataTypeRef as! NSData? {
+            if let data = dataTypeRef as! Data? {
                 return data
             }
         }
         return nil
     }
     
-    class func delete(key: String) -> Bool {
+    class func delete(_ key: String) -> Bool {
         let query = [
             kSecClass as String       : kSecClassGenericPassword,
             kSecAttrAccount as String : key ]
         
-        let status: OSStatus = SecItemDelete(query as CFDictionaryRef)
+        let status: OSStatus = SecItemDelete(query as CFDictionary)
         
         return status == noErr
     }
@@ -57,20 +57,20 @@ class Keychain {
     class func clear() -> Bool {
         let query = [ kSecClass as String : kSecClassGenericPassword ]
         
-        let status: OSStatus = SecItemDelete(query as CFDictionaryRef)
+        let status: OSStatus = SecItemDelete(query as CFDictionary)
         
         return status == noErr
     }
 }
 
 extension String {
-    public var dataValue: NSData {
-        return dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+    public var dataValue: Data {
+        return data(using: String.Encoding.utf8, allowLossyConversion: false)!
     }
 }
 
-extension NSData {
+extension Data {
     public var stringValue: String {
-        return NSString(data: self, encoding: NSUTF8StringEncoding) as! String
+        return NSString(data: self, encoding: String.Encoding.utf8.rawValue) as! String
     }
 }

@@ -12,9 +12,9 @@ import Cocoa
 public class EventMonitor {
     private var monitor: AnyObject?
     private let mask: NSEventMask
-    private let handler: NSEvent? -> ()
+    private let handler: (NSEvent?) -> ()
     
-    public init(mask: NSEventMask, handler: NSEvent? -> ()) {
+    public init(mask: NSEventMask, handler: (NSEvent?) -> ()) {
         self.mask = mask
         self.handler = handler
     }
@@ -24,7 +24,7 @@ public class EventMonitor {
     }
     
     public func start() {
-        monitor = NSEvent.addGlobalMonitorForEventsMatchingMask(mask, handler: handler)
+        monitor = NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handler)
     }
     
     public func stop() {

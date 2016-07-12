@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'ConnectedDrive'
-  s.version = '0.2'
+  s.version = '0.2.1'
   s.license = 'MIT'
   s.summary = 'Access to BMW\'s ConnectedDrive service for the BMW i3 and i8'
   s.homepage = 'https://github.com/ronaldmannak/ConnectedDrive'
@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
   s.tvos.deployment_target = '9.0'
 
-  s.dependency 'Alamofire', '~> 3.1'
-  s.dependency 'Decodable', '~> 0.3.3'
+  s.dependency 'Alamofire', '~> 3.4.1'
+  s.dependency 'Decodable', '~> 0.4.3'
 end

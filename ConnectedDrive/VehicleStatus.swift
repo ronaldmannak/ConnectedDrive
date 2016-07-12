@@ -16,8 +16,8 @@ import Decodable
  */
 public struct VehicleStatus {
     
-    public let fetchTime: NSDate                   // Time of last fetch
-    public let updateTime: NSDate                  // Time of last update reason (not the time the information was fetched)
+    public let fetchTime: Date                   // Time of last fetch
+    public let updateTime: Date                  // Time of last update reason (not the time the information was fetched)
     public let chargingLevelHv: Int
     public let chargingStatus: ChargingStatus
     public let connectionStatus: ConnectionStatus
@@ -54,7 +54,7 @@ public struct VehicleStatus {
             
             let hours = chargingTimeRemaining / 60
             let minutes = chargingTimeRemaining % 60
-            return "\(hours):" + String(format: "%02d", minutes) + " " + (hours > 0 ? NSLocalizedString("hours", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: "") : NSLocalizedString("minutes", tableName: nil, bundle: NSBundle(forClass: ConnectedDrive.self), value: "", comment: ""))
+            return "\(hours):" + String(format: "%02d", minutes) + " " + (hours > 0 ? NSLocalizedString("hours", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: "") : NSLocalizedString("minutes", tableName: nil, bundle: Bundle(for: ConnectedDrive.self), value: "", comment: ""))
         }
     }
     
@@ -84,12 +84,12 @@ public struct VehicleStatus {
 
 extension VehicleStatus: Decodable {
     
-    public static func decode(json: AnyObject) throws -> VehicleStatus {
+    public static func decode(_ json: AnyObject) throws -> VehicleStatus {
         
         let status = try json => "vehicleStatus"
 
         return try VehicleStatus(
-            fetchTime: NSDate(),
+            fetchTime: Date(),
             updateTime: status => "updateTime",
             chargingLevelHv: status => "chargingLevelHv",
             chargingStatus: ChargingStatus(string: try? status => "chargingStatus"),

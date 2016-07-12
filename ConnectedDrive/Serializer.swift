@@ -21,30 +21,30 @@ extension Alamofire.Request {
     
     - returns: Self
     */
-    public func responseCollection<T: Decodable>(key: String, completionHandler: Response<[T], NSError> -> Void) -> Self {
+    public func responseCollection<T: Decodable>(_ key: String, completionHandler: (Response<[T], NSError>) -> Void) -> Self {
         let responseSerializer = ResponseSerializer<[T], NSError> { request, response, data, error in
             
-            guard error == nil else { return .Failure(error!) }
+            guard error == nil else { return .failure(error!) }
             
             let result = Alamofire
                 .Request
-                .JSONResponseSerializer(options: .AllowFragments)
+                .JSONResponseSerializer(options: .allowFragments)
                 .serializeResponse(request, response, data, error)
             
             switch result {
-            case .Success(let value):
+            case .success(let value):
                 do {
-                    guard let items = value.valueForKeyPath(key) else {
-                        return .Failure(Error.errorWithCode(.JSONSerializationFailed,
-                            failureReason: "JSON parsing error, JSON: \(value)"))
+                    guard let items = value.value(forKey: key) else {
+                        let error = NSError(domain: "ConnectedDrive", code: Error.Code.jsonSerializationFailed.rawValue, userInfo: ["JSON": value])
+                        return .failure(error)
                     }
-                    return .Success(try [T].decode(items))
+                    return .success(try [T].decode(items))
                 } catch {
-                    return .Failure(Error.errorWithCode(.JSONSerializationFailed,
-                        failureReason: "JSON parsing error, JSON: \(value)"))
+                    let error = NSError(domain: "ConnectedDrive", code: Error.Code.jsonSerializationFailed.rawValue, userInfo: ["JSON": value])
+                    return .failure(error)
                 }
-            case .Failure(let error):
-                return.Failure(error)
+            case .failure(let error):
+                return.failure(error)
             }
         }
         
@@ -59,26 +59,26 @@ extension Alamofire.Request {
     
     - returns: Self
     */
-    public func responseObject<T: Decodable>(completionHandler: Response<T, NSError> -> Void) -> Self {
+    public func responseObject<T: Decodable>(_ completionHandler: (Response<T, NSError>) -> Void) -> Self {
         
         let responseSerializer = ResponseSerializer<T, NSError> { request, response, data, error in
             
-            guard error == nil else { return .Failure(error!) }
+            guard error == nil else { return .failure(error!) }
             
-            let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let JSONResponseSerializer = Request.JSONResponseSerializer(options: .allowFragments)
             let result = JSONResponseSerializer.serializeResponse(request, response, data, error)
             
             switch result {
-            case .Success(let value):
+            case .success(let value):
                 
                 do {
-                    return .Success(try T.decode(value))
+                    return .success(try T.decode(value))
                 } catch {
-                    return .Failure(Error.errorWithCode(.JSONSerializationFailed,
-                        failureReason: "JSON parsing error, JSON: \(value)"))
+                    let error = NSError(domain: "ConnectedDrive", code: Error.Code.jsonSerializationFailed.rawValue, userInfo: ["JSON": value])
+                    return .failure(error)
                 }
-            case .Failure(let error):
-                return .Failure(error)
+            case .failure(let error):
+                return .failure(error)
             }
         }
         

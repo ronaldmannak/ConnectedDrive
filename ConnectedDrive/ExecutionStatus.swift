@@ -17,7 +17,7 @@ public struct ExecutionStatus {
 
 extension ExecutionStatus: Decodable {
     
-    public static func decode(json: AnyObject) throws -> ExecutionStatus {
+    public static func decode(_ json: AnyObject) throws -> ExecutionStatus {
         
         let status = try json => "executionStatus"
         

@@ -10,7 +10,7 @@ import Cocoa
 
 protocol LoginDelegate: class {
     
-    func userProvidedUsername(username: String, password: String)
+    func userProvidedUsername(_ username: String, password: String)
 }
 
 class LoginViewController: NSViewController {
@@ -29,7 +29,7 @@ class LoginViewController: NSViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @IBAction func login(sender: AnyObject) {
+    @IBAction func login(_ sender: AnyObject) {
         
         guard usernameField.stringValue.characters.count > 0 && passwordField.stringValue.characters.count > 0 else { return }
         
