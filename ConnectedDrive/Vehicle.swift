@@ -149,13 +149,13 @@ extension Vehicle: Decodable {
 
 extension Vehicle: Hashable {
     
-    var hashValue : Int {
+    public var hashValue : Int {
         get {
             return VIN.hashValue
         }
     }
 }
 
-func == (left: Vehicle, right: Vehicle) {
+public func == (left: Vehicle, right: Vehicle) -> Bool {
     return left.hashValue == right.hashValue
 }
