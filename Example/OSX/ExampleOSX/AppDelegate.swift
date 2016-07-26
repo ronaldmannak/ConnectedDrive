@@ -112,7 +112,6 @@ extension AppDelegate {
                 // TODO:
                 self.showNotification("\(error.code) " + error.localizedDescription, text: error.localizedFailureReason)
             }
-            
         }
     }
     

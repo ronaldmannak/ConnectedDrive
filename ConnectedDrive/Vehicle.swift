@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Decodable
+//import Decodable
 
 /**
  <#Description#>
@@ -95,7 +95,7 @@ public enum BMWiColor: String {
     }
     
     init(string: String?) {
-        if let string = string, status = BMWiColor(rawValue: string) {
+        if let string = string, let status = BMWiColor(rawValue: string) {
             self = status
         } else {
             self = .UnknownKey
@@ -145,4 +145,17 @@ extension Vehicle: Decodable {
             lastVehicleStatus: nil
         )
     }
+}
+
+extension Vehicle: Hashable {
+    
+    var hashValue : Int {
+        get {
+            return VIN.hashValue
+        }
+    }
+}
+
+func == (left: Vehicle, right: Vehicle) {
+    return left.hashValue == right.hashValue
 }

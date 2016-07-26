@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Decodable
+//import Decodable
 
 /// Wraps the "hub" value of Vehicle
 ///
@@ -55,7 +55,7 @@ public enum ChargingStatus: String {
     }
     
     init(string: String?) {
-        if let string = string, status = ChargingStatus(rawValue: string) {
+        if let string = string, let status = ChargingStatus(rawValue: string) {
             self = status
         } else {
             self = .UnknownKey
@@ -93,7 +93,7 @@ public enum ConnectionStatus: String {
     }
     
     init(string: String?) {
-        if let string = string, status = ConnectionStatus(rawValue: string) {
+        if let string = string, let status = ConnectionStatus(rawValue: string) {
             self = status
         } else {
             self = .UnknownKey
@@ -119,7 +119,7 @@ public enum DoorStatus: String {
     }
     
     init(string: String?) {
-        if let string = string, status = DoorStatus(rawValue: string) {
+        if let string = string, let status = DoorStatus(rawValue: string) {
             self = status
         } else {
             self = .UnknownKey
@@ -141,7 +141,7 @@ public enum LightStatus: String {
     }
     
     init(string: String?) {
-        if let string = string, status = LightStatus(rawValue: string) {
+        if let string = string, let status = LightStatus(rawValue: string) {
             self = status
         } else {
             self = .UnknownKey
