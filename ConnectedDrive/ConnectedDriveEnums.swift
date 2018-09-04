@@ -12,7 +12,7 @@ import Decodable
 /// Wraps the "hub" value of Vehicle
 ///
 /// BMW has three geographically different servers: China, Europa and USA. 
-/// While a ConnectedDrive user can login to any server and retreive their vehicle list,
+/// While a ConnectedDrive user can login to any server and retrieve their vehicle list,
 /// the app needs to communicate with one specific server for vehicle status and vehicle commands.
 ///
 /// The rawValues correspond with "hub" JSON value of the server vehicle list.
