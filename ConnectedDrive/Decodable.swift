@@ -10,7 +10,7 @@ import Foundation
 import Decodable
 import CoreLocation
 
-// Make NSDate conform Decodable protocol
+// Make NSDate conform to Decodable protocol
 extension Date: Decodable {
     
     enum NSDateDecodingError: ErrorProtocol {
@@ -30,7 +30,7 @@ extension Date: Decodable {
     }
 }
 
-// Make CLLocation conform Decodable protocol
+// Make CLLocation conform to Decodable protocol
 extension CLLocation: Decodable {
     
     public static func decode(_ json: AnyObject) throws -> Self {
@@ -44,7 +44,7 @@ extension CLLocation: Decodable {
     }
 }
 
-// Make CLLocationCoordinate2D conform Decodable protocol
+// Make CLLocationCoordinate2D conform to Decodable protocol
 extension CLLocationCoordinate2D: Decodable {
     
     public static func decode(_ json: AnyObject) throws -> CLLocationCoordinate2D {

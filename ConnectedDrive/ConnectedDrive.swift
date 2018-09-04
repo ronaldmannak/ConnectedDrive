@@ -341,7 +341,7 @@ extension ConnectedDrive {
      
      - parameter vehicle:    Vehicle
      - parameter completion: Invoked when server returns data. Result is `Result.Success(RangeMap)` in case of success
-        or `Result.Failure(NSError)` in case of fail.
+        or `Result.Failure(NSError)` in case of failure.
      */
     public func rangeMap(_ vehicle: Vehicle, completion: (Result<RangeMap, NSError>) -> Void) {
         
@@ -362,7 +362,7 @@ extension ConnectedDrive {
     }
     
     /**
-     This method makes sure the app is logged in to the right geographic server. Logs into a different server if necessary
+     This method makes sure the app is logged in to the right geographic server. Logs into a different server if necessary.
      Invoke this method for server calls that are server specific (e.g. vehicle status)
      
      - parameter completion: invoked when switch was completed or no switch was necessary
